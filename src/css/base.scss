@@ -1,7 +1,10 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
+@import 'variables';
+
 $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+$sky-gradient: linear-gradient(to right, rgb(7, 101, 133), rgb(255, 255, 255));
 ;
 
 body {
-  background: $primary-background;
+  background: $sky-gradient;
 }
