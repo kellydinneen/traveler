@@ -1,0 +1,58 @@
+@import 'variables';
+@import 'buttons';
+@import 'base';
+
+body {
+  background: $sky-gradient;
+  font-family: $title-font;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+}
+
+header {
+  // border: solid 2px black;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.plane-logo {
+  background-image: url('../images/paper-plane.png');
+  // border: solid 2px black;
+  width: 100px;
+  height: 100px;
+}
+
+.traveler-dashboard {
+  // border: solid 2px black;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.trip-form {
+  border: solid 2px white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+label {
+  color: white;
+  font-size: 1.5rem;
+  font-family: $title-font;
+}
+
+input {
+  margin: 10px;
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 15px;
+  font-family: $small-font;
+}

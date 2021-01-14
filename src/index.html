@@ -2,11 +2,31 @@
 <html lang="en-US">
   <head>
     <title>Traveler</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Yusei+Magic&display=swap" rel="stylesheet">
   </head>
   <body>
-  <section class='login'>
-  </section>
-  <section class='traveler-dashboard'>
-  </section>
+    <header>
+      <button>Past Trips</button>
+      <div class='plane-logo'></div>
+      <button>Upcoming Trips</button>
+    </header>
+    <main>
+      <section class='login hidden'>
+        <div class='earth'></div>
+      </section>
+      <section class='traveler-dashboard'>
+        <form class='trip-form'>
+          <label for='destination-input'>Where do you want to go?</label>
+          <input id='destination-input' class='destination-input' type='text' placeholder='pick a place' value=''>
+          <label for='departure-date-input'>When do you want to go?</label>
+          <input id='departure-date-input' class='departure-date-input' type='text' placeholder='date' value=''>
+          <label for='travel-party-input'>Who's coming with you?</label>
+          <input id='travel-party-input' class='travel-party-input' type='text' placeholder='number in travel party' value=''>
+          <label for='duration-input'>How long will you stay?</label>
+          <input id='duration-input' class='duration-input' type='text' placeholder='number of days' value=''>
+        </form>
+      </section>
+    <main>
   </body>
 </html>
