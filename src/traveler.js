@@ -1,8 +1,9 @@
 class Traveler {
-  constructor(allTripData, allDestinationData) {
-    this.id = id;
-    this.name = name;
-    this.travelerType = travelerType;
+  constructor(travelerData, allTripData, allDestinationData) {
+    this.id = travelerData.id;
+    this.name = travelerData.name;
+    this.travelerType = travelerData.travelerType;
+    this.destinations = allDestinationData;
     this.tripBook = allTripData.reduce((allUserTrips, trip) => {
       if(trip.userID === this.userID){
         let newTrip = new Trip(trip, this.destinations);
