@@ -2,14 +2,14 @@ class Traveler {
   constructor(travelerData, allTripData, allDestinationData) {
     this.id = travelerData.id;
     this.name = travelerData.name;
-    this.travelerType = travelerData.travelerType;
+    this.type = travelerData.travelerType;
     this.destinations = allDestinationData;
     this.tripBook = allTripData.reduce((allUserTrips, trip) => {
       if(trip.userID === this.userID){
         let newTrip = new Trip(trip, this.destinations);
         allUserTrips.push(newTrip);
       }
-      return acc;
+      return allUserTrips;
     }, []);
   }
 
@@ -18,4 +18,10 @@ class Traveler {
       return totalCost += trip.calculateTripCost();
     },0)
   }
+
+  getTripsByStatus(status) {
+    return this.tripBook.filter(trip => trip.status === status);
+  }
 }
+
+export default Traveler;

@@ -1,11 +1,12 @@
 let domUpdates = {
 
-  greetTraveler(userID) {
-    const userGreeting = document.querySelector('.user-info');
-    userName.innerText = `Welcome, ${user.name}.`;
+  greetTraveler(name, type) {
+    const userGreeting = document.querySelector('.user-greeting');
+    userGreeting.innerText = `Welcome, ${name}. We hear you're a ${type}.`;
   },
 
   displayCategoryOfTrip(trips, tripCategory) {
+    console.log(tripCategory);
     const tripCategorySection = document.querySelector(`.${tripCategory}`);
     trips.forEach(trip => {
       tripCategorySection.insertAdjacentHTML = ('afterbegin', `<div class='trip-card'>
@@ -35,3 +36,5 @@ let domUpdates = {
     }
   },
 }
+
+export default domUpdates;

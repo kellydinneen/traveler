@@ -18,9 +18,9 @@ function loadTravelerDashboard(){
       getData('http://localhost:3001/api/v1/destinations')
     ])
     .then(data => {
-      let travelerData = data[0];
-      let tripData = data[1];
-      let destinationData = data[2];
+      let travelerData = data[0].travelers;
+      let tripData = data[1].trips;
+      let destinationData = data[2].destinations;
       buildPage(travelerData, tripData, destinationData);
     })
     .catch(error => console.log(error))
@@ -34,10 +34,27 @@ function getData(endpoint){
 }
 
 function buildPage(travelerData, tripData, destinationData){
+  compileTravelerInfo(travelerData, tripData, destinationData);
+  domUpdates.greetTraveler(traveler.name, traveler.type);
+  displayTravelersTrips();
+}
+
+function compileTravelerInfo(travelerData, tripData, destinationData) {
   let randomID = (Math.floor(Math.random() * 49) + 1)
   let currentTravelerData = travelerData.find(user => {
     return user.id === Number(randomID);
   });
- traveler = new Traveler(currentTravelerData, tripData, destinationData);
+  console.log(currentTravelerData);
+  traveler = new Traveler(currentTravelerData, tripData, destinationData);
+}
 
+function displayTravelersTrips(){
+  let pastTrips = traveler.getTripsByStatus('past');
+  let presentTrips = traveler.getTripsByStatus('present');
+  let upcomingTrips = traveler.getTripsByStatus('upcoming');
+  let pendingTrips = traveler.getTripsByStatus('pending');
+  domUpdates.displayCategoryOfTrip(pastTrips, 'past')
+  domUpdates.displayCategoryOfTrip(presentTrips, 'present')
+  domUpdates.displayCategoryOfTrip(upcomingTrips, 'upcoming')
+  domUpdates.displayCategoryOfTrip(pendingTrips, 'pending')
 }

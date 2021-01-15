@@ -15,5 +15,6 @@ class Trip {
     let travelAgentFee = 0.1;
     return (estimatedLodgingCost + estimatedFlightCost) * (1 + travelAgentFee);
   }
-  
+
 }
+export default Trip;

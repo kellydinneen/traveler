@@ -43,6 +43,19 @@ header {
   padding: 30px;
 }
 
+.my-trips {
+  border: solid 2px black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.trip-list {
+  border: solid 2px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 label {
   color: white;
   font-size: 1.5rem;
@@ -55,4 +68,7 @@ input {
   padding: 20px;
   border-radius: 15px;
   font-family: $small-font;
+}
+.hidden {
+  display: none;
 }
