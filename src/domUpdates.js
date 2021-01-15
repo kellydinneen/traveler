@@ -12,7 +12,7 @@ let domUpdates = {
       let displayContent = ''
       trips.forEach(trip => {
         displayContent += `<div id='trip-${trip.id}' class='trip-card'>
-        <h2>${trip.departureDate}</h2><h2>${trip.destination.destination}</h2></div>`
+        <h2>${trip.departureDate}</h2><h2>${trip.durationInDays} Days</h2><h2>${trip.destination.destination}</h2></div>`
       })
       tripCategoryDisplay.innerHTML = displayContent;
     }

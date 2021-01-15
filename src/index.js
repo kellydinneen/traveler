@@ -6,10 +6,15 @@ import domUpdates from './domUpdates';
 let myTripsButton = document.querySelector('.my-trips-button');
 let browseDestinationsButton = document.querySelector('.browse-destinations-button');
 let myTripsPage = document.querySelector('.my-trips');
+let homePage = document.querySelector('.traveler-dashboard');
+let homeButton = document.querySelector('.home-button');
 
 let traveler;
 
 window.onload = loadTravelerDashboard();
+
+myTripsButton.addEventListener('click', displayTravelersTrips);
+homeButton.addEventListener('click', returnHome);
 
 function loadTravelerDashboard(){
   return Promise.all([
@@ -36,7 +41,7 @@ function getData(endpoint){
 function buildPage(travelerData, tripData, destinationData){
   compileTravelerInfo(travelerData, tripData, destinationData);
   domUpdates.greetTraveler(traveler.name, traveler.type);
-  displayTravelersTrips();
+  // displayTravelersTrips();
 }
 
 function compileTravelerInfo(travelerData, tripData, destinationData) {
@@ -49,6 +54,8 @@ function compileTravelerInfo(travelerData, tripData, destinationData) {
 }
 
 function displayTravelersTrips(){
+  domUpdates.interactWithClassList('remove', 'hidden', event, myTripsPage);
+  domUpdates.interactWithClassList('add', 'hidden', event, homePage);
   traveler.tripBook.forEach(trip => {
     if(trip.status !== 'pending'){
       trip.getTripTiming();
@@ -62,4 +69,9 @@ function displayTravelersTrips(){
   domUpdates.displayCategoryOfTrip(presentTrips, 'present')
   domUpdates.displayCategoryOfTrip(upcomingTrips, 'upcoming')
   domUpdates.displayCategoryOfTrip(pendingTrips, 'pending')
+}
+
+function returnHome() {
+  domUpdates.interactWithClassList('add', 'hidden', event, myTripsPage);
+  domUpdates.interactWithClassList('remove', 'hidden', event, homePage);
 }

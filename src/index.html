@@ -8,7 +8,7 @@
   <body>
     <header>
       <button class='header-button my-trips-button'>My Trips</button>
-      <div class='plane-logo'></div>
+      <div class='plane-logo home-button'></div>
       <button class='header-button browse-destinations-button'>Browse Destinations</button>
     </header>
     <main>
@@ -16,7 +16,7 @@
       <section class='login hidden'>
         <div class='earth'></div>
       </section>
-      <section class='traveler-dashboard hidden'>
+      <section class='traveler-dashboard'>
         <form class='trip-form'>
           <label for='destination-input'>Where do you want to go?</label>
           <input id='destination-input' class='destination-input' type='text' placeholder='pick a place' value=''>
@@ -28,11 +28,26 @@
           <input id='duration-input' class='duration-input' type='text' placeholder='number of days' value=''>
         </form>
       </section>
-      <section class='my-trips'>
-        <div class='past trip-list'></div>
-        <div class='present trip-list'></div>
-        <div class='upcoming trip-list'></div>
-        <div class='pending trip-list'></div>
+      <section class='my-trips hidden'>
+        <h1>My Trips</h1>
+        <div class='trip-categories'>
+          <div class='trip-list'>
+            <h2>Past</h2>
+            <div class='past'></div>
+          </div>
+          <div class='trip-list'>
+            <h2>Present</h2>
+            <div class='present'></div>
+          </div>
+          <div class='trip-list'>
+            <h2>Upcoming</h2>
+            <div class='upcoming'></div>
+          </div>
+          <div class='trip-list'>
+            <h2>Pending</h2>
+            <div class='pending'></div>
+          </div>
+        </div>
       </section>
       <section class='traveler-dashboard'>
     <main>
