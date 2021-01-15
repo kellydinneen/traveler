@@ -8,6 +8,7 @@ let browseDestinationsButton = document.querySelector('.browse-destinations-butt
 let myTripsPage = document.querySelector('.my-trips');
 let homePage = document.querySelector('.traveler-dashboard');
 let homeButton = document.querySelector('.home-button');
+let totalSpendingDisplay = document.querySelector('.total-annual-spending');
 
 let traveler;
 
@@ -54,6 +55,7 @@ function compileTravelerInfo(travelerData, tripData, destinationData) {
 }
 
 function displayTravelersTrips(){
+  domUpdates.displayOneLiners(totalSpendingDisplay, `Total Travel Spending: $${traveler.calculateAnnualTravelSpending()}`);
   domUpdates.interactWithClassList('remove', 'hidden', event, myTripsPage);
   domUpdates.interactWithClassList('add', 'hidden', event, homePage);
   traveler.tripBook.forEach(trip => {
