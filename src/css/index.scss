@@ -51,10 +51,20 @@ header {
 
 .trip-list {
   border: solid 2px black;
+  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-family: $small-font;
+  font-size: 10px;
 }
+
+// .trip-card {
+//   border: solid 1px black;
+//   height: 50px;
+//   display: flex;
+//   flex-direction: column;
+// }
 
 label {
   color: white;

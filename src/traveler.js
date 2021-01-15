@@ -1,16 +1,17 @@
+import Trip from './trip';
+
 class Traveler {
   constructor(travelerData, allTripData, allDestinationData) {
     this.id = travelerData.id;
     this.name = travelerData.name;
     this.type = travelerData.travelerType;
     this.destinations = allDestinationData;
-    this.tripBook = allTripData.reduce((allUserTrips, trip) => {
-      if(trip.userID === this.userID){
-        let newTrip = new Trip(trip, this.destinations);
-        allUserTrips.push(newTrip);
-      }
-      return allUserTrips;
-    }, []);
+    this.tripBook = this.getTrips(allTripData);
+  }
+
+  getTrips(data) {
+    let userTrips = data.filter(trip => trip.userID === this.id);
+    return userTrips.map(trip => new Trip(trip, this.destinations));
   }
 
   calculateAnnualTravelSpending() {
@@ -25,3 +26,12 @@ class Traveler {
 }
 
 export default Traveler;
+
+// this.tripBook = allTripData.filter(trip => trip.userID === this.userID).map(return new Trip(trip, this.destinations);
+// this.tripBook = allTripData.reduce((allUserTrips, trip) => {
+//   if(trip.userID === this.userID){
+//     let newTrip = new Trip(trip, this.destinations);
+//     allUserTrips.push(newTrip);
+//   }
+//   return allUserTrips;
+// }, []);

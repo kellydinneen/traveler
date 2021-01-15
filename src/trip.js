@@ -16,5 +16,24 @@ class Trip {
     return (estimatedLodgingCost + estimatedFlightCost) * (1 + travelAgentFee);
   }
 
+  getTripTiming() {
+    let today = new Date();
+    let departureDate = new Date(this.departureDate);
+    let returnDate = this.getReturnDate(departureDate);
+    if(today < departureDate) {
+      this.status = 'upcoming';
+    } else if (today > departureDate && today < returnDate){
+      this.status = 'present';
+    } else if (today > departureDate && today > returnDate){
+      this.status = 'past'
+    }
+  }
+
+  getReturnDate(departure) {
+    var returnDate = new Date(departure);
+    returnDate.setDate(returnDate.getDate() + this.durationInDays);
+    return returnDate;
+  }
+
 }
 export default Trip;

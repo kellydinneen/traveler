@@ -6,12 +6,16 @@ let domUpdates = {
   },
 
   displayCategoryOfTrip(trips, tripCategory) {
-    console.log(tripCategory);
-    const tripCategorySection = document.querySelector(`.${tripCategory}`);
-    trips.forEach(trip => {
-      tripCategorySection.insertAdjacentHTML = ('afterbegin', `<div class='trip-card'>
-      <h2>${trip.departureDate}</h2><h2>${trip.destination.name}</h2></div>`)
-    })
+    console.log(trips, tripCategory, trips.length > 0);
+    if(trips.length > 0) {
+      let tripCategoryDisplay = document.querySelector(`.${tripCategory}`);
+      let displayContent = ''
+      trips.forEach(trip => {
+        displayContent += `<div id='trip-${trip.id}' class='trip-card'>
+        <h2>${trip.departureDate}</h2><h2>${trip.destination.destination}</h2></div>`
+      })
+      tripCategoryDisplay.innerHTML = displayContent;
+    }
   },
 
   displayOneLiners(element, text) {

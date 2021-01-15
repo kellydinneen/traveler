@@ -49,6 +49,11 @@ function compileTravelerInfo(travelerData, tripData, destinationData) {
 }
 
 function displayTravelersTrips(){
+  traveler.tripBook.forEach(trip => {
+    if(trip.status !== 'pending'){
+      trip.getTripTiming();
+    }
+  });
   let pastTrips = traveler.getTripsByStatus('past');
   let presentTrips = traveler.getTripsByStatus('present');
   let upcomingTrips = traveler.getTripsByStatus('upcoming');
