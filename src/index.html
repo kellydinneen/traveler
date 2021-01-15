@@ -7,9 +7,9 @@
   </head>
   <body>
     <header>
-      <button>Past Trips</button>
+      <button class='header-button my-trips-button'>My Trips</button>
       <div class='plane-logo'></div>
-      <button>Upcoming Trips</button>
+      <button class='header-button browse-destinations-button'>Browse Destinations</button>
     </header>
     <main>
       <section class='login hidden'>
@@ -27,6 +27,13 @@
           <input id='duration-input' class='duration-input' type='text' placeholder='number of days' value=''>
         </form>
       </section>
+      <section class='my-trips hidden'>
+        <div class='past trip-list'></div>
+        <div class='present trip-list'></div>
+        <div class='upcoming trip-list'></div>
+        <div class='pending trip-list'></div>
+      </section>
+      <section class='traveler-dashboard'>
     <main>
   </body>
 </html>
