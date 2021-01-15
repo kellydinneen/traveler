@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Traveler</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Yusei+Magic&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    <header>
+      <button class='header-button my-trips-button'>My Trips</button>
+      <div class='plane-logo home-button'></div>
+      <button class='header-button browse-destinations-button'>Browse Destinations</button>
+    </header>
+    <main>
+      <section class='login hidden'>
+        <div class='earth'></div>
+      </section>
+      <section class='traveler-dashboard'>
+        <h2 class='user-greeting'></h2>
+        <form class='trip-form'>
+          <label for='destination-input'>Where do you want to go?</label>
+          <input id='destination-input' class='destination-input' type='text' placeholder='pick a place' value=''>
+          <label for='departure-date-input'>When do you want to go?</label>
+          <input id='departure-date-input' class='departure-date-input' type='text' placeholder='date' value=''>
+          <label for='travel-party-input'>Who's coming with you?</label>
+          <input id='travel-party-input' class='travel-party-input' type='text' placeholder='number in travel party' value=''>
+          <label for='duration-input'>How long will you stay?</label>
+          <input id='duration-input' class='duration-input' type='text' placeholder='number of days' value=''>
+        </form>
+      </section>
+      <section class='my-trips hidden'>
+        <h1>My Trips</h1>
+        <div class='trip-categories'>
+          <div class='trip-list'>
+            <h2>Past</h2>
+            <div class='past'></div>
+          </div>
+          <div class='trip-list'>
+            <h2>Present</h2>
+            <div class='present'></div>
+          </div>
+          <div class='trip-list'>
+            <h2>Upcoming</h2>
+            <div class='upcoming'></div>
+          </div>
+          <div class='trip-list'>
+            <h2>Pending</h2>
+            <div class='pending'></div>
+          </div>
+        </div>
+        <h1 class='total-annual-spending'><h1>
+      </section>
+      <section class='traveler-dashboard'>
+    <main>
   </body>
 </html>

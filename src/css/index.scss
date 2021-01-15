@@ -1,0 +1,107 @@
+@import 'variables';
+@import 'buttons';
+@import 'base';
+
+body {
+  background: $sky-gradient;
+  font-family: $title-font;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+}
+
+header {
+  // border: solid 2px black;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.plane-logo {
+  background-image: url('../images/paper-plane.png');
+  // border: solid 2px black;
+  width: 100px;
+  height: 100px;
+}
+
+.traveler-dashboard {
+  // border: solid 2px black;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.trip-form {
+  border: solid 2px white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.my-trips {
+  border: solid 2px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trip-list {
+  background: white;
+  border-radius: 15px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: $small-font;
+  font-size: 10px;
+  width: 200px;
+  height: 400px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.trip-categories {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trip-card {
+  line-height: 10px;
+  border: solid 1px black;
+  margin: 5px;
+  // height: 50px;
+  // display: flex;
+  // flex-direction: column;
+}
+
+label {
+  color: white;
+  font-size: 1.5rem;
+  font-family: $title-font;
+}
+
+input {
+  margin: 10px;
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 15px;
+  font-family: $small-font;
+}
+.hidden {
+  display: none;
+}
+
+.header-button {
+  font-family: $title-font;
+  font-size: 20px;
+  border-radius: 15px;
+  border: none;
+  background: none;
+}
