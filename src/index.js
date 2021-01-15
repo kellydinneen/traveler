@@ -19,9 +19,9 @@ homeButton.addEventListener('click', returnHome);
 
 function loadTravelerDashboard(){
   return Promise.all([
-      getData('http://localhost:3001/api/v1/travelers'),
-      getData('http://localhost:3001/api/v1/trips'),
-      getData('http://localhost:3001/api/v1/destinations')
+      getData('travelers'),
+      getData('trips'),
+      getData('destinations')
     ])
     .then(data => {
       let travelerData = data[0].travelers;
@@ -33,7 +33,7 @@ function loadTravelerDashboard(){
   }
 
 function getData(endpoint){
-  return fetch(endpoint)
+  return fetch(`http://localhost:3001/api/v1/${endpoint}`)
     .then(response => response.json())
     .then(data => data)
     .catch(error => console.log(error))
