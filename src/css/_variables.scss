@@ -12,6 +12,8 @@ $small-font: 'Roboto', sans-serif;
 
 $right-arrow: '../images/right-arrow-amaranth.png';
 $left-arrow: '../images/left-arrow-taupe.png';
+$checkmark: '../images/checkmark.png';
+$disabled-checkmark: '../images/disabled-checkmark.png';
 
 @mixin back-forward-buttons($image) {
   height: 50px;
@@ -22,4 +24,5 @@ $left-arrow: '../images/left-arrow-taupe.png';
   background-color: transparent;
   border: none;
   border-radius: 50%;
+  margin: 10px;
 }

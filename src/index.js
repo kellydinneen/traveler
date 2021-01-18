@@ -1,6 +1,7 @@
 import './css/index.scss';
 import Traveler from './traveler';
 import Trip from './trip';
+import Agent from './agent';
 import networkRequests from './networkRequests';
 import domUpdates from './domUpdates';
 
@@ -18,16 +19,18 @@ const browseDestinationsButton = document.querySelector('.browse-destinations-bu
 const homeButton = document.querySelector('.home-button');
 const continueButton = document.querySelector('.continue-button');
 const backButton = document.querySelector('.back-button');
+const finishButton = document.querySelector('.finish-button');
 
 const totalSpendingDisplay = document.querySelector('.total-annual-spending');
 const travelerGreeting = document.querySelector('.user-greeting');
 const createTripForm = document.querySelector('.trip-form');
 
-const daysDropdown = document.querySelector('.duration-input');
+const durationInput = document.querySelector('.duration-input');
+const dateInput = document.querySelector('.departure-date-input');
 const travelersDropdown = document.querySelector('.travel-party-input');
 const destinationsDropdown = document.querySelector('.destination-input');
 
-let traveler;
+let traveler, agent;
 
 window.onload = loadTravelerDashboard();
 
@@ -35,6 +38,35 @@ myTripsButton.addEventListener('click', displayTravelersTrips);
 homeButton.addEventListener('click', returnHome);
 continueButton.addEventListener('click', continueForm);
 backButton.addEventListener('click', goBackInForm);
+finishButton.addEventListener('click', createNewTrip);
+
+// destinationsDropdown.addEventListener('change', updateDestinationSelection);
+// travelersDropdown.addEventListener('change', updateTravelersSelection);
+// durationInput.addEventListener('change', updateDurationSelection);
+
+function createNewTrip() {
+  if(
+    destinationsDropdown.value !== 0 &&
+    dateInput.value !== "" &&
+    durationInput.value !== "" &&
+    travelersDropdown.value !== 0
+  ){
+    const tripData = {
+      id: agent.trips.length,
+      userID: traveler.id,
+      destinationID: parseInt(destinationsDropdown.value),
+      travelers: travelersDropdown.value,
+      date: dateInput.value,
+      duration: durationInput.value,
+      status: 'pending',
+      suggestedActivities: []
+    }
+    createOrAlterTrip('trips', tripData);
+    displayNewTripDetails();
+  } else {
+    console.log('MISSING TRIP INFORMATION');
+  }
+}
 
 function continueForm() {
   const pageNumber = parseInt(continueButton.id);
@@ -45,6 +77,10 @@ function continueForm() {
   continueButton.id = `${pageNumber + 1}`;
   if (continueButton.id === '1') {
     domUpdates.alterClassList('remove', 'hidden', backButton);
+  }
+  if(continueButton.id === '3') {
+    domUpdates.alterClassList('add', 'hidden', continueButton);
+    domUpdates.alterClassList('remove', 'hidden', finishButton);
   }
 }
 
@@ -57,6 +93,9 @@ function goBackInForm() {
   continueButton.id = `${pageNumber - 1}`;
   if (continueButton.id === '0') {
     domUpdates.alterClassList('add', 'hidden', backButton);
+  } else if (continueButton.id === '2') {
+    domUpdates.alterClassList('remove', 'hidden', continueButton);
+    domUpdates.alterClassList('add', 'hidden', finishButton);
   }
 }
 
@@ -79,6 +118,7 @@ function loadTravelerDashboard(){
 
 function buildPage(travelerData, tripData, destinationData){
   compileTravelerInfo(travelerData, tripData, destinationData);
+  agent = new Agent(tripData, destinationData, travelerData);
   domUpdates.greetTraveler(traveler.name, traveler.type);
   window.setTimeout(fadeOutGreeting, 4500);
   window.setTimeout(fadeInForm, 4600);
@@ -125,4 +165,21 @@ function displayTravelersTrips(){
 function returnHome() {
   domUpdates.alterClassList('add', 'hidden', myTripsPage);
   domUpdates.alterClassList('remove', 'hidden', homePage);
+  resetForm();
+}
+
+function resetForm() {
+  createTripForm.reset();
+  continueButton.id = '0';
+  domUpdates.alterClassList('remove', 'hidden', continueButton);
+  if(!backButton.classList.contains('hidden')){
+    domUpdates.alterClassList('add', 'hidden', backButton);
+  }
+  formPages.forEach(page => {
+    if(page.id === 'f_1'){
+      domUpdates.alterClassList('remove', 'hidden', page);
+    } else if(!page.classList.contains('hidden')){
+      domUpdates.alterClassList('add', 'hidden', page)
+    }
+  })
 }

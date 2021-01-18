@@ -40,7 +40,6 @@ addDestinationsToDropdown(dropdown, destinations) {
  },
 
 addNumbersToDropdowns(dropdown, numberChoices) {
-   console.log(dropdown, numberChoices);
      numberChoices.forEach(number => {
        const newSelection = document.createElement('option');
        newSelection.value = number;

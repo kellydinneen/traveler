@@ -53,6 +53,7 @@ header {
   border-radius: 15px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
   padding: 30px;
@@ -103,7 +104,7 @@ header {
 
 label {
   color: $blue-sapphire;
-  font-size: 3rem;
+  font-size: 2rem;
   font-family: $title-font;
   font-weight: bolder;
 }

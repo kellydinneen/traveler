@@ -7,9 +7,18 @@
   @include back-forward-buttons($left-arrow);
 }
 
+.finish-button {
+  @include back-forward-buttons($checkmark);
+  box-shadow: 0px 3px 10px 2px $mint-cream;
+}
+
+.glow {
+  box-shadow: 0px 3px 10px 10px $mint-cream;
+}
+
 .back-forward-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 select {
