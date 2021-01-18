@@ -24,6 +24,7 @@ const finishButton = document.querySelector('.finish-button');
 const totalSpendingDisplay = document.querySelector('.total-annual-spending');
 const travelerGreeting = document.querySelector('.user-greeting');
 const createTripForm = document.querySelector('.trip-form');
+const newTripDetails = document.querySelector('.new-trip-details');
 
 const durationInput = document.querySelector('.duration-input');
 const dateInput = document.querySelector('.departure-date-input');
@@ -61,8 +62,12 @@ function createNewTrip() {
       status: 'pending',
       suggestedActivities: []
     }
-    createOrAlterTrip('trips', tripData);
-    displayNewTripDetails();
+    domUpdates.alterClassList('add', 'hidden', finishButton);
+    domUpdates.alterClassList('add', 'hidden', backButton);
+    domUpdates.alterClassList('add', 'hidden', formPages[3]);
+    const newTrip = new Trip(tripData, traveler.destinations);
+    domUpdates.displayNewTripDetails(newTrip, newTripDetails);
+    networkRequests.createOrAlterTrip('trips', tripData, traveler, agent);
   } else {
     console.log('MISSING TRIP INFORMATION');
   }

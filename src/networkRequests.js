@@ -6,7 +6,8 @@ const networkRequests = {
       .catch(error => console.log(error))
   },
 
-  createOrAlterTrip(endpoint, trip) {
+  createOrAlterTrip(endpoint, trip, traveler, agent) {
+    console.log(traveler);
     const post = {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},

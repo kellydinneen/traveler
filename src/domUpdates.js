@@ -46,6 +46,11 @@ addNumbersToDropdowns(dropdown, numberChoices) {
        newSelection.innerText = number;
        dropdown.appendChild(newSelection);
      });
+ },
+
+ displayNewTripDetails(trip, element) {
+   element.classList.remove('hidden');
+   element.innerHTML = `<img class='trip-image' src=${trip.destination.image}><h3>You are traveling to ${trip.destination.destination}</h3><h3>You and ${trip.numberOfTravelers - 1} others will leave on ${trip.departureDate} and return ${trip.durationInDays} days later.</h3><h4>Standby for your agent to approve this trip and provide you with a list of suggested adventures at your destination.</h4>`;
  }
 }
 
