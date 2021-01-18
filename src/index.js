@@ -53,20 +53,22 @@ function createNewTrip() {
     travelersDropdown.value !== 0
   ){
     const tripData = {
-      id: agent.trips.length,
-      userID: traveler.id,
-      destinationID: parseInt(destinationsDropdown.value),
-      travelers: travelersDropdown.value,
-      date: dateInput.value,
-      duration: durationInput.value,
-      status: 'pending',
-      suggestedActivities: []
+      id: Number(agent.trips.length),
+      userID: Number(traveler.id),
+      destinationID: Number(destinationsDropdown.value),
+      travelers: Number(travelersDropdown.value),
+      date: `${dateInput.value}`,
+      duration: Number(durationInput.value),
+      status:'pending',
+      suggestedActivities:[]
     }
+    console.log(tripData);
     domUpdates.alterClassList('add', 'hidden', finishButton);
     domUpdates.alterClassList('add', 'hidden', backButton);
     domUpdates.alterClassList('add', 'hidden', formPages[3]);
     const newTrip = new Trip(tripData, traveler.destinations);
     domUpdates.displayNewTripDetails(newTrip, newTripDetails);
+    // networkRequests.postNewTrip(tripData);
     networkRequests.createOrAlterTrip('trips', tripData, traveler, agent);
   } else {
     console.log('MISSING TRIP INFORMATION');
