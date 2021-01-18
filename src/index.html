@@ -18,14 +18,30 @@
       <section class='traveler-dashboard'>
         <h2 class='user-greeting'></h2>
         <form class='trip-form'>
-          <label for='destination-input'>Where do you want to go?</label>
-          <input id='destination-input' class='destination-input' type='text' placeholder='pick a place' value=''>
-          <label for='departure-date-input'>When do you want to go?</label>
-          <input id='departure-date-input' class='departure-date-input' type='text' placeholder='date' value=''>
-          <label for='travel-party-input'>Who's coming with you?</label>
-          <input id='travel-party-input' class='travel-party-input' type='text' placeholder='number in travel party' value=''>
-          <label for='duration-input'>How long will you stay?</label>
-          <input id='duration-input' class='duration-input' type='text' placeholder='number of days' value=''>
+          <div class='form-section form-section_1'>
+            <label for='destination-input'>Where do you want to go?</label>
+            <select class="destination-input" name="destination-input">
+              <option value="0" disabled selected>Select a Destination</option>
+            </select>
+          </div>
+          <div class='form-section form-section_2 hidden'>
+            <label for='departure-date-input'>When do you want to leave?</label>
+            <input id='departure-date-input' class='departure-date-input' type='text' placeholder='enter a departure date' value=''>
+          </div>
+          <div class='form-section form-section_3 hidden'>
+            <label for='duration-input'>How long will you stay?</label>
+            <input id='duration-input' class='duration-input' type='text' placeholder='enter a number of days' value=''>
+          </div>
+          <div class='form-section form-section_4 hidden'>
+            <label for='travel-party-input'>How many people will go with you?</label>
+            <select class="travel-party-input" name="travel-party-input">
+              <option value="0" disabled selected>Select the total number of travelers</option>
+            </select>
+          </div>
+          <div class='back-forward-buttons'>
+            <button class='back-button duration-to-departure' type='button'></button>
+            <button class='continue-button duration-to-travel-party' type='button'></button>
+          </div>
         </form>
       </section>
       <section class='my-trips hidden'>

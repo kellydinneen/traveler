@@ -1,3 +1,25 @@
-$sky-gradient: linear-gradient(to right, rgb(7, 101, 133), rgb(255, 255, 255));
+// $sky-gradient: linear-gradient(to right, rgb(7, 101, 133), rgb(255, 255, 255));
+$sky-gradient: linear-gradient(to right, #076585, #F3F7F0);
+
+$mint-cream: #F3F7F0;
+$blue-sapphire: #076585;
+$sizzling-red: #F2545B;
+$amaranthe: #A93F55;
+$rose-taupe: #8C5E58;
+
 $title-font: 'Yusei Magic', sans-serif;
 $small-font: 'Roboto', sans-serif;
+
+$right-arrow: '../images/right-arrow-amaranth.png';
+$left-arrow: '../images/left-arrow-taupe.png';
+
+@mixin back-forward-buttons($image) {
+  height: 50px;
+  width: 50px;
+  background-image: url($image);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+}

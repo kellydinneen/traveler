@@ -5,6 +5,7 @@
 body {
   background: $sky-gradient;
   font-family: $title-font;
+  color: $mint-cream;
   // display: flex;
   // flex-direction: column;
   // justify-content: center;
@@ -19,7 +20,7 @@ header {
 }
 
 .plane-logo {
-  background-image: url('../images/paper-plane.png');
+  background-image: url('../images/paper-plane-red-outline.png');
   // border: solid 2px black;
   width: 100px;
   height: 100px;
@@ -36,7 +37,8 @@ header {
 }
 
 .trip-form {
-  border: solid 2px white;
+  border: solid 2px $mint-cream;
+  height: 400px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -52,7 +54,7 @@ header {
 }
 
 .trip-list {
-  background: white;
+  background: $mint-cream;
   border-radius: 15px;
   width: 20%;
   display: flex;
@@ -82,7 +84,7 @@ header {
 }
 
 label {
-  color: white;
+  color: $mint-cream;
   font-size: 1.5rem;
   font-family: $title-font;
 }
@@ -94,9 +96,6 @@ input {
   border-radius: 15px;
   font-family: $small-font;
 }
-.hidden {
-  display: none;
-}
 
 .header-button {
   font-family: $title-font;
@@ -104,4 +103,14 @@ input {
   border-radius: 15px;
   border: none;
   background: none;
+  color: $mint-cream;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
 }
