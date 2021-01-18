@@ -17,7 +17,13 @@
       </section>
       <section class='traveler-dashboard'>
         <h2 class='user-greeting'></h2>
-        <form class='trip-form'>
+        <form class='trip-form hidden'>
+          <div class='created-trip-summary'>
+            <h4 class='selected-destination'>destination > </h4>
+            <h4 class='selected-departure'> departure > </h4>
+            <h4 class='selected-duration'> duration > </h4>
+            <h4 class='selected-travel-party'> travel party</h4>
+          </div>
           <div class='form-section form-section_1'>
             <label for='destination-input'>Where do you want to go?</label>
             <select class="destination-input" name="destination-input">

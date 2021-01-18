@@ -12,6 +12,8 @@ const browseDestinationsButton = document.querySelector('.browse-destinations-bu
 const homeButton = document.querySelector('.home-button');
 
 const totalSpendingDisplay = document.querySelector('.total-annual-spending');
+const travelerGreeting = document.querySelector('.user-greeting');
+const createTripForm = document.querySelector('.trip-form');
 
 const daysDropdown = document.querySelector('.duration-input');
 const travelersDropdown = document.querySelector('.travel-party-input');
@@ -42,11 +44,21 @@ function loadTravelerDashboard(){
 function buildPage(travelerData, tripData, destinationData){
   compileTravelerInfo(travelerData, tripData, destinationData);
   domUpdates.greetTraveler(traveler.name, traveler.type);
+  window.setTimeout(fadeOutGreeting, 6500);
+  window.setTimeout(fadeInForm, 7000);
   let dayOptions =[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
   let travelerOptions = [1,2,3,4,5,6,7,8,9,10];
   addDestinationsToDropdown(destinationsDropdown, destinationData);
   addNumbersToDropdowns(daysDropdown, dayOptions);
   // addNumbersToDropdowns(travelersDropdown, travelerOptions);
+}
+
+function fadeOutGreeting() {
+  domUpdates.alterClassList('add', 'hidden', travelerGreeting)
+}
+
+function fadeInForm() {
+  domUpdates.alterClassList('remove', 'hidden', createTripForm)
 }
 
 function compileTravelerInfo(travelerData, tripData, destinationData) {
