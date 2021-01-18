@@ -26,3 +26,22 @@ option {
   background-color: $mint-cream;
   color: $blue-sapphire;
 }
+
+// .header-buttons {
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+.header-button {
+  font-family: $title-font;
+  font-size: 20px;
+  border: none;
+  background: none;
+  color: $mint-cream;
+  margin: 10px;
+}
+
+.new-trip-button {
+  // border-right: solid 5px $amaranthe;
+  // border-radius: 3px;
+}

@@ -14,9 +14,11 @@ body {
 header {
   // border: solid 2px black;
   width: 100%;
-  height: 100px;
+  height: 150px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .plane-logo {
@@ -24,14 +26,21 @@ header {
   // border: solid 2px black;
   width: 100px;
   height: 100px;
+  // margin-bottom: 10px;
+}
+
+.user-greeting {
+  margin-top: 200px;
+  font-size: 3rem;
+  color: $amaranthe;
 }
 
 .traveler-dashboard {
   // border: solid 2px black;
-  height: 700px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   align-content: center;
 }
@@ -49,7 +58,7 @@ header {
 }
 
 .my-trips {
-  border: solid 2px black;
+  // border: solid 2px black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -58,6 +67,7 @@ header {
 
 .trip-list {
   background: $mint-cream;
+  color: $blue-sapphire;
   border-radius: 15px;
   width: 20%;
   display: flex;
@@ -79,11 +89,14 @@ header {
 
 .trip-card {
   line-height: 10px;
-  border: solid 1px black;
+  width: 180px;
+  border-bottom: solid 2px $blue-sapphire;
   margin: 5px;
-  // height: 50px;
-  // display: flex;
-  // flex-direction: column;
+  padding: 10px;
+
+  &:hover {
+    box-shadow: 0px 3px 10px 2px $blue-sapphire;
+  }
 }
 
 label {
@@ -101,15 +114,6 @@ input {
   font-family: $small-font;
 }
 
-.header-button {
-  font-family: $title-font;
-  font-size: 20px;
-  border-radius: 15px;
-  border: none;
-  background: none;
-  color: $mint-cream;
-}
-
 .form-section {
   display: flex;
   flex-direction: column;
@@ -117,6 +121,10 @@ input {
 
 .created-trip-summary {
   display: flex;
+}
+
+.trip-card-heading {
+  font-family: $title-font;
 }
 
 .hidden {

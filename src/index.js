@@ -44,13 +44,12 @@ function loadTravelerDashboard(){
 function buildPage(travelerData, tripData, destinationData){
   compileTravelerInfo(travelerData, tripData, destinationData);
   domUpdates.greetTraveler(traveler.name, traveler.type);
-  window.setTimeout(fadeOutGreeting, 6500);
-  window.setTimeout(fadeInForm, 7000);
-  let dayOptions =[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
-  let travelerOptions = [1,2,3,4,5,6,7,8,9,10];
-  addDestinationsToDropdown(destinationsDropdown, destinationData);
-  addNumbersToDropdowns(daysDropdown, dayOptions);
-  // addNumbersToDropdowns(travelersDropdown, travelerOptions);
+  window.setTimeout(fadeOutGreeting, 4500);
+  window.setTimeout(fadeInForm, 4600);
+  const travelerOptions = [1,2,3,4,5,'6+'];
+  domUpdates.addDestinationsToDropdown(destinationsDropdown, destinationData);
+  // addNumbersToDropdowns(daysDropdown, dayOptions);
+  domUpdates.addNumbersToDropdowns(travelersDropdown, travelerOptions);
 }
 
 function fadeOutGreeting() {
@@ -91,34 +90,4 @@ function displayTravelersTrips(){
 function returnHome() {
   domUpdates.alterClassList('add', 'hidden', myTripsPage);
   domUpdates.alterClassList('remove', 'hidden', homePage);
-}
-
-function postNewTrip(newTrip) {
-   const postFormat = {
-     method: 'POST',
-     headers: {'Content-Type': 'application/json'},
-     body: JSON.stringify(newTrip)
-   }
-
-   return fetch('http://localhost:3001/api/v1/trips', postFormat)
-     .then(response => response.json())
- }
-
- function addDestinationsToDropdown(dropdown, destinations) {
-    destinations.forEach(destination => {
-      const newDestination = document.createElement('option');
-      newDestination.value = destination.id;
-      newDestination.innerText = destination.destination;
-      dropdown.appendChild(newDestination);
-    })
-}
-
-function addNumbersToDropdowns(dropdown, numberChoices) {
-  console.log(dropdown, numberChoices);
-    numberChoices.forEach(number => {
-      const newSelection = document.createElement('option');
-      newSelection.value = number;
-      newSelection.innerText = number;
-      dropdown.appendChild(newSelection);
-    });
 }
