@@ -46,13 +46,15 @@ header {
 }
 
 .trip-form {
-  border: solid 2px $mint-cream;
-  height: 300px;
-  width: 600px;
+  // border: solid 2px $mint-cream;
+  box-shadow: 0px 3px 10px 20px $mint-cream;
+  height: 400px;
+  width: 650px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   padding: 30px;
   margin-top: 100px;
 }

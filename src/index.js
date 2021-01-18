@@ -6,10 +6,18 @@ import domUpdates from './domUpdates';
 
 const myTripsPage = document.querySelector('.my-trips');
 const homePage = document.querySelector('.traveler-dashboard');
+const formPages = [
+  document.querySelector('#f_1'),
+  document.querySelector('#f_2'),
+  document.querySelector('#f_3'),
+  document.querySelector('#f_4')
+];
 
 const myTripsButton = document.querySelector('.my-trips-button');
 const browseDestinationsButton = document.querySelector('.browse-destinations-button');
 const homeButton = document.querySelector('.home-button');
+const continueButton = document.querySelector('.continue-button');
+const backButton = document.querySelector('.back-button');
 
 const totalSpendingDisplay = document.querySelector('.total-annual-spending');
 const travelerGreeting = document.querySelector('.user-greeting');
@@ -25,6 +33,34 @@ window.onload = loadTravelerDashboard();
 
 myTripsButton.addEventListener('click', displayTravelersTrips);
 homeButton.addEventListener('click', returnHome);
+continueButton.addEventListener('click', continueForm);
+backButton.addEventListener('click', goBackInForm);
+
+function continueForm() {
+  const pageNumber = parseInt(continueButton.id);
+  const currentFormPage = formPages[pageNumber];
+  const nextFormPage = formPages[pageNumber + 1];
+  domUpdates.alterClassList('add', 'hidden', currentFormPage);
+  domUpdates.alterClassList('remove', 'hidden', nextFormPage);
+  continueButton.id = `${pageNumber + 1}`;
+  if (continueButton.id === '1') {
+    domUpdates.alterClassList('remove', 'hidden', backButton);
+  }
+}
+
+function goBackInForm() {
+  const pageNumber = parseInt(continueButton.id);
+  const currentFormPage = formPages[pageNumber];
+  const previousFormPage = formPages[pageNumber - 1];
+  domUpdates.alterClassList('add', 'hidden', currentFormPage);
+  domUpdates.alterClassList('remove', 'hidden', previousFormPage);
+  continueButton.id = `${pageNumber - 1}`;
+  if (continueButton.id === '0') {
+    domUpdates.alterClassList('add', 'hidden', backButton);
+  }
+}
+
+
 
 function loadTravelerDashboard(){
   return Promise.all([
@@ -46,9 +82,8 @@ function buildPage(travelerData, tripData, destinationData){
   domUpdates.greetTraveler(traveler.name, traveler.type);
   window.setTimeout(fadeOutGreeting, 4500);
   window.setTimeout(fadeInForm, 4600);
-  const travelerOptions = [1,2,3,4,5,'6+'];
   domUpdates.addDestinationsToDropdown(destinationsDropdown, destinationData);
-  // addNumbersToDropdowns(daysDropdown, dayOptions);
+  const travelerOptions = [1,2,3,4,5,6,7,8,9,10];
   domUpdates.addNumbersToDropdowns(travelersDropdown, travelerOptions);
 }
 
