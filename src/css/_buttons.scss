@@ -36,6 +36,33 @@ option {
   color: $blue-sapphire;
 }
 
+.id-input {
+  margin: 20px;
+  height: 20px;
+  width: 250px;
+  border-radius: 15px;
+  background-color: $mint-cream;
+  color: $blue-sapphire;
+  border: none;
+  font-family: $small-font;
+}
+
+.name-input {
+  width: 350px;
+}
+
+.login-button{
+  font-family: $small-font;
+  background-color: $amaranthe;
+  color: $mint-cream;
+  font-size: 30px;
+  border-radius: 15px;
+  border: none;
+  padding: 10px;
+  box-shadow: 0px 3px 10px 2px $blue-sapphire;
+  margin-top: 20px;
+}
+
 // .header-buttons {
 //   display: flex;
 //   justify-content: space-between;
@@ -53,4 +80,31 @@ option {
 .new-trip-button {
   // border-right: solid 5px $amaranthe;
   // border-radius: 3px;
+}
+
+.agent-login-instructions {
+  color: $amaranthe;
+}
+
+.login-welcome{
+  color: $amaranthe;
+  font-style: italic;
+  font-size: 35px;
+}
+
+.login-label {
+  font-family: $small-font;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+.agent-login-button {
+  background-color: $rose-taupe;
+  font-family: $small-font;
+  padding: 10px;
+  width: 150px;
+  color: $mint-cream;
+  border: solid 2px $mint-cream;
+  border-radius: 5px;
+  font-size: 15px;
 }
