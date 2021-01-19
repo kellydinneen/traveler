@@ -14,11 +14,19 @@ class Traveler {
     return userTrips.map(trip => new Trip(trip, this.destinations));
   }
 
-  calculateAnnualTravelSpending() {
-    // const thisYearsTripsthis.tripBook.filter
-    return this.tripBook.reduce((totalCost, trip) => {
-      return totalCost += trip.calculateTripCost();
-    },0)
+  calculateAnnualTravelSpending(year) {
+    const thisYearsTrips = this.tripBook.filter(trip => {
+      const date = new Date(trip.departureDate);
+      return date.getFullYear() === year;
+    });
+    if(thisYearsTrips.length > 0){
+      const annualSpending = thisYearsTrips.reduce((totalCost, trip) => {
+        return totalCost += trip.calculateTripCost();
+      },0)
+      return `$${annualSpending.toFixed(2)}`;
+    } else {
+      return `Your spending is $0 for ${year}. Must not have caught the travel bug, huh?`;
+    }
   }
 
   getTripsByStatus(status) {

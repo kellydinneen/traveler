@@ -24,7 +24,7 @@ class Trip {
       this.status = 'upcoming';
     } else if (today > departureDate && today < returnDate){
       this.status = 'present';
-    } else if (today > departureDate && today > returnDate){
+    } else if (today > returnDate){
       this.status = 'past'
     }
   }
