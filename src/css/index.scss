@@ -80,9 +80,17 @@ header {
   font-family: $small-font;
   font-size: 10px;
   width: 200px;
-  height: 400px;
+  height: 350px;
   padding: 10px;
-  margin: 20px;
+  margin: 10px;
+  box-shadow: 0px 3px 10px 3px $blue-sapphire;
+}
+
+.trip-list-heading {
+  border-bottom: solid 5px $amaranthe;
+  color: $rose-taupe;
+  font-family: $title-font;
+  padding: 5px;
 }
 
 .trip-categories {
@@ -91,7 +99,7 @@ header {
 }
 
 .trip-card {
-  line-height: 10px;
+  line-height: 15px;
   width: 180px;
   border-bottom: solid 2px $blue-sapphire;
   margin: 5px;
@@ -133,6 +141,18 @@ input {
 .trip-image {
   height: 100px;
   width: auto;
+}
+
+.section-heading {
+  color: $amaranthe;
+  background-color: $mint-cream;
+  padding: 7px;
+  border-radius: 15px;
+  border: solid 2px $sizzling-red;
+}
+
+.total-annual-spending {
+  color: $amaranthe;
 }
 
 .hidden {
