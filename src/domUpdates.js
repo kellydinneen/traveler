@@ -29,12 +29,12 @@ let domUpdates = {
     }
   },
 
-addDestinationsToDropdown(dropdown, destinations) {
-     destinations.forEach(destination => {
-       const newDestination = document.createElement('option');
-       newDestination.value = destination.id;
-       newDestination.innerText = destination.destination;
-       dropdown.appendChild(newDestination);
+addTextOptionsToDropdown(dropdown, array) {
+     array.forEach(item => {
+       const newOption = document.createElement('option');
+       newOption.value = item.id;
+       newOption.innerText = item.name;
+       dropdown.appendChild(newOption);
      })
  },
 
