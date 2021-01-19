@@ -23,6 +23,7 @@ const continueButton = document.querySelector('.continue-button');
 const backButton = document.querySelector('.back-button');
 const finishButton = document.querySelector('.finish-button');
 
+const loginLogo = document.querySelector('#dummy-plane');
 const loginErrorMessage = document.querySelector('.login-error-message');
 const totalSpendingDisplay = document.querySelector('.total-annual-spending');
 const travelerGreeting = document.querySelector('.user-greeting');
@@ -79,15 +80,14 @@ function loadTravelerDashboard(){
       })
       .catch(error => console.log(error))
     } else {
-      loginErrorMessage.innerText = 'Sorry, we do not recognize that combination of name and id.';
+      const errorMessage = 'Sorry, we do not recognize that combination of name and ID. HINT (for Travis) -- the dropdown menu lists names in order by ID, so, for example, the first name in the menu corresponds to ID "1".';
+      domUpdates.displayOneLiners(loginErrorMessage, errorMessage);
     }
   }
 
 function approveTravelerLogin() {
   const idEntry = Number(travelerIDInput.value);
-  console.log('idENTRY',travelerIDInput.value, idEntry);
   const nameEntryID = Number(travelerNameInput.value);
-  console.log('nameENTRYID',travelerNameInput.value, nameEntryID);
   return idEntry === nameEntryID;
 }
 
@@ -112,6 +112,7 @@ function createCurrentTraveler(travelerData, tripData, destinationData) {
 
 function loadHomepage() {
   domUpdates.alterClassList('add', 'hidden', loginPage);
+  domUpdates.alterClassList('add', 'hidden', loginLogo);
   const homeElements = [homePage, myTripsButton, logoutButton, homeButton];
   homeElements.forEach(element => domUpdates.alterClassList('remove', 'hidden', element))
 }
