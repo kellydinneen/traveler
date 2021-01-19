@@ -17,8 +17,8 @@
     </header>
     <main>
       <section class='login'>
-        <h1>Welcome to</h1>
-        <h1>Traveler!</h1>
+        <h1>Welcome to Traveler</h1>
+        <form class='login-form'>
         <label for='name-input'>Choose the name attached to your profile</label>
         <select class="name-input" name="name-input">
           <option value="0" disabled selected>Select your name</option>
@@ -26,6 +26,9 @@
         <label for='id-input'>Enter the ID attached to your profile</label>
         <input id='id-input' class='id-input' type='text' placeholder='your ID is a two digit number' value=''>
         <button>Login</button>
+      </form>
+        <h3>If you are an agent, login here:</h3>
+        <button>Agent Login</button>
       </section>
       <section class='traveler-dashboard hidden'>
         <h2 class='user-greeting'></h2>
