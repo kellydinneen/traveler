@@ -151,6 +151,17 @@ input {
   border: solid 2px $sizzling-red;
 }
 
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
 .total-annual-spending {
   color: $amaranthe;
 }

@@ -128,8 +128,8 @@ function buildPage(travelerData, tripData, destinationData){
   compileTravelerInfo(travelerData, tripData, destinationData);
   agent = new Agent(tripData, destinationData, travelerData);
   domUpdates.greetTraveler(traveler.name, traveler.type);
-  window.setTimeout(fadeOutGreeting, 4500);
-  window.setTimeout(fadeInForm, 4600);
+  window.setTimeout(fadeOutGreeting, 4000);
+  window.setTimeout(fadeInForm, 4100);
   domUpdates.addDestinationsToDropdown(destinationsDropdown, destinationData);
   const travelerOptions = [1,2,3,4,5,6,7,8,9,10];
   domUpdates.addNumbersToDropdowns(travelersDropdown, travelerOptions);

@@ -7,18 +7,27 @@
   </head>
   <body>
     <header>
-      <div class='plane-logo home-button'></div>
+      <div class='plane-logo home-button hidden'></div>
+      <div class='plane-logo'></div>
       <div class='header-buttons'>
-        <button class='header-button my-trips-button'>My Trips</button>
-        <button class='header-button new-trip-button'>Plan a Trip</button>
-        <button class='header-button browse-destinations-button'>Browse Destinations</button>
+        <button class='header-button my-trips-button hidden'>My Trips</button>
+        <button class='header-button new-trip-button hidden'>Plan a Trip</button>
+        <button class='header-button browse-destinations-button hidden'>Browse Destinations</button>
       </div>
     </header>
     <main>
-      <section class='login hidden'>
-        <div class='earth'></div>
+      <section class='login'>
+        <h1>Welcome to</h1>
+        <h1>Traveler!</h1>
+        <label for='name-input'>Choose the name attached to your profile</label>
+        <select class="name-input" name="name-input">
+          <option value="0" disabled selected>Select your name</option>
+        </select>
+        <label for='id-input'>Enter the ID attached to your profile</label>
+        <input id='id-input' class='id-input' type='text' placeholder='your ID is a two digit number' value=''>
+        <button>Login</button>
       </section>
-      <section class='traveler-dashboard'>
+      <section class='traveler-dashboard hidden'>
         <h2 class='user-greeting'></h2>
         <form class='trip-form hidden'>
           <div class='created-trip-summary'>
