@@ -5,6 +5,7 @@
 body {
   background: $sky-gradient;
   font-family: $title-font;
+  color: $mint-cream;
   // display: flex;
   // flex-direction: column;
   // justify-content: center;
@@ -13,21 +14,30 @@ body {
 header {
   // border: solid 2px black;
   width: 100%;
-  height: 100px;
+  height: 150px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .plane-logo {
-  background-image: url('../images/paper-plane.png');
+  background-image: url('../images/paper-plane-red-outline.png');
   // border: solid 2px black;
   width: 100px;
   height: 100px;
+  // margin-bottom: 10px;
+}
+
+.user-greeting {
+  margin-top: 200px;
+  font-size: 3rem;
+  color: $amaranthe;
 }
 
 .traveler-dashboard {
   // border: solid 2px black;
-  height: 700px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,15 +46,21 @@ header {
 }
 
 .trip-form {
-  border: solid 2px white;
+  // border: solid 2px $mint-cream;
+  box-shadow: 0px 3px 10px 20px $mint-cream;
+  height: 400px;
+  width: 650px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: 30px;
+  margin-top: 100px;
 }
 
 .my-trips {
-  border: solid 2px black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -52,7 +68,8 @@ header {
 }
 
 .trip-list {
-  background: white;
+  background: $mint-cream;
+  color: $blue-sapphire;
   border-radius: 15px;
   width: 20%;
   display: flex;
@@ -62,9 +79,18 @@ header {
   font-family: $small-font;
   font-size: 10px;
   width: 200px;
-  height: 400px;
+  height: 350px;
   padding: 10px;
-  margin: 20px;
+  margin: 10px;
+  box-shadow: 0px 3px 10px 3px $blue-sapphire;
+  overflow: scroll;
+}
+
+.trip-list-heading {
+  border-bottom: solid 5px $amaranthe;
+  color: $rose-taupe;
+  font-family: $title-font;
+  padding: 5px;
 }
 
 .trip-categories {
@@ -73,18 +99,22 @@ header {
 }
 
 .trip-card {
-  line-height: 10px;
-  border: solid 1px black;
+  line-height: 15px;
+  width: 180px;
+  border-bottom: solid 2px $blue-sapphire;
   margin: 5px;
-  // height: 50px;
-  // display: flex;
-  // flex-direction: column;
+  padding: 10px;
+
+  &:hover {
+    box-shadow: 0px 3px 10px 2px $blue-sapphire;
+  }
 }
 
 label {
-  color: white;
-  font-size: 1.5rem;
+  color: $blue-sapphire;
+  font-size: 2rem;
   font-family: $title-font;
+  font-weight: bolder;
 }
 
 input {
@@ -94,14 +124,37 @@ input {
   border-radius: 15px;
   font-family: $small-font;
 }
-.hidden {
-  display: none;
+
+.form-section {
+  display: flex;
+  flex-direction: column;
 }
 
-.header-button {
+.created-trip-summary {
+  display: flex;
+}
+
+.trip-card-heading {
   font-family: $title-font;
-  font-size: 20px;
+}
+
+.trip-image {
+  height: 100px;
+  width: auto;
+}
+
+.section-heading {
+  color: $amaranthe;
+  background-color: $mint-cream;
+  padding: 7px;
   border-radius: 15px;
-  border: none;
-  background: none;
+  border: solid 2px $sizzling-red;
+}
+
+.total-annual-spending {
+  color: $amaranthe;
+}
+
+.hidden {
+  display: none;
 }

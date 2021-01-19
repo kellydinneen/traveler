@@ -7,9 +7,12 @@
   </head>
   <body>
     <header>
-      <button class='header-button my-trips-button'>My Trips</button>
       <div class='plane-logo home-button'></div>
-      <button class='header-button browse-destinations-button'>Browse Destinations</button>
+      <div class='header-buttons'>
+        <button class='header-button my-trips-button'>My Trips</button>
+        <button class='header-button new-trip-button'>Plan a Trip</button>
+        <button class='header-button browse-destinations-button'>Browse Destinations</button>
+      </div>
     </header>
     <main>
       <section class='login hidden'>
@@ -17,40 +20,73 @@
       </section>
       <section class='traveler-dashboard'>
         <h2 class='user-greeting'></h2>
-        <form class='trip-form'>
-          <label for='destination-input'>Where do you want to go?</label>
-          <input id='destination-input' class='destination-input' type='text' placeholder='pick a place' value=''>
-          <label for='departure-date-input'>When do you want to go?</label>
-          <input id='departure-date-input' class='departure-date-input' type='text' placeholder='date' value=''>
-          <label for='travel-party-input'>Who's coming with you?</label>
-          <input id='travel-party-input' class='travel-party-input' type='text' placeholder='number in travel party' value=''>
-          <label for='duration-input'>How long will you stay?</label>
-          <input id='duration-input' class='duration-input' type='text' placeholder='number of days' value=''>
+        <form class='trip-form hidden'>
+          <div class='created-trip-summary'>
+            <h4 class='selected-destination'>destination > </h4>
+            <h4 class='selected-departure'> departure > </h4>
+            <h4 class='selected-duration'> duration > </h4>
+            <h4 class='selected-travel-party'> travel party</h4>
+          </div>
+          <div id='f_1' class='form-section'>
+            <label for='destination-input'>Where do you want to go?</label>
+            <select class="destination-input" name="destination-input">
+              <option value="0" disabled selected>Select a Destination</option>
+            </select>
+          </div>
+          <div id='f_2' class='form-section hidden'>
+            <label for='departure-date-input'>When do you want to leave?</label>
+            <input id='departure-date-input' class='departure-date-input' type='text' placeholder='enter a departure date' value=''>
+          </div>
+          <div id='f_3' class='form-section hidden'>
+            <label for='duration-input'>How long will you stay?</label>
+            <input id='duration-input' class='duration-input' type='text' placeholder='enter a number of days' value=''>
+          </div>
+          <div id='f_4' class='form-section hidden'>
+            <label for='travel-party-input'>How many people will go with you?</label>
+            <select class="travel-party-input" name="travel-party-input">
+              <option value="0" disabled selected>Select the total number of travelers</option>
+            </select>
+          </div>
+          <div class='new-trip-details hidden'></div>
+          <div class='back-forward-buttons'>
+            <button class='back-button hidden' type='button'></button>
+            <button id='0' class='continue-button' type='button'></button>
+            <button class='finish-button hidden' type='button'></button>
+          </div>
         </form>
       </section>
       <section class='my-trips hidden'>
-        <h1>My Trips</h1>
+        <h1 class='section-heading'>My Trips</h1>
         <div class='trip-categories'>
           <div class='trip-list'>
-            <h2>Past</h2>
-            <div class='past'></div>
+            <h2 class='trip-list-heading'>Past</h2>
+            <div class='past'>
+              <h3>You haven't been on a trip with us yet!</h3>
+            </div>
           </div>
           <div class='trip-list'>
-            <h2>Present</h2>
-            <div class='present'></div>
+            <h2 class='trip-list-heading'>Present</h2>
+            <div class='present'>
+              <h3>You are not currently on a trip</h3>
+            </div>
           </div>
           <div class='trip-list'>
-            <h2>Upcoming</h2>
-            <div class='upcoming'></div>
+            <h2 class='trip-list-heading'>Upcoming</h2>
+            <div class='upcoming'>
+              <h3>You have no upcoming trips</h3>
+            </div>
           </div>
           <div class='trip-list'>
-            <h2>Pending</h2>
-            <div class='pending'></div>
+            <h2 class='trip-list-heading'>Pending</h2>
+            <div class='pending'>
+              <h3>You have no pending trips</h3>
+            </div>
           </div>
         </div>
         <h1 class='total-annual-spending'><h1>
       </section>
-      <section class='traveler-dashboard'>
+      <section class='trip-detail-page'>
+      </section>
     <main>
   </body>
 </html>

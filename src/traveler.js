@@ -15,6 +15,7 @@ class Traveler {
   }
 
   calculateAnnualTravelSpending() {
+    // const thisYearsTripsthis.tripBook.filter
     return this.tripBook.reduce((totalCost, trip) => {
       return totalCost += trip.calculateTripCost();
     },0)
@@ -26,12 +27,3 @@ class Traveler {
 }
 
 export default Traveler;
-
-// this.tripBook = allTripData.filter(trip => trip.userID === this.userID).map(return new Trip(trip, this.destinations);
-// this.tripBook = allTripData.reduce((allUserTrips, trip) => {
-//   if(trip.userID === this.userID){
-//     let newTrip = new Trip(trip, this.destinations);
-//     allUserTrips.push(newTrip);
-//   }
-//   return allUserTrips;
-// }, []);
