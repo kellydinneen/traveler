@@ -23,7 +23,7 @@ class Traveler {
       const annualSpending = thisYearsTrips.reduce((totalCost, trip) => {
         return totalCost += trip.calculateTripCost();
       },0)
-      return annualSpending.toFixed(2);
+      return `$${annualSpending.toFixed(2)}`;
     } else {
       return `Your spending is $0 for ${year}. Must not have caught the travel bug, huh?`;
     }

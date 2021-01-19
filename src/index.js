@@ -37,6 +37,7 @@ const durationInput = document.querySelector('.duration-input');
 const dateInput = document.querySelector('.departure-date-input');
 const travelersDropdown = document.querySelector('.travel-party-input');
 const destinationsDropdown = document.querySelector('.destination-input');
+const spendingYearInput = document.querySelector('.year-input');
 
 let traveler, agent;
 
@@ -48,7 +49,9 @@ homeButton.addEventListener('click', returnHome);
 continueButton.addEventListener('click', continueForm);
 backButton.addEventListener('click', goBackInForm);
 finishButton.addEventListener('click', createNewTrip);
-myTripsPage.addEventListener('click', viewTripDetails)
+myTripsPage.addEventListener('click', viewTripDetails);
+spendingYearInput.addEventListener('change', displaySpending);
+
 
 // destinationsDropdown.addEventListener('change', updateDestinationSelection);
 // travelersDropdown.addEventListener('change', updateTravelersSelection);
@@ -126,7 +129,6 @@ function fadeInForm() {
 }
 
 function displayTravelersTrips(){
-  domUpdates.displayOneLiners(totalSpendingDisplay, `Total Travel Spending: $${traveler.calculateAnnualTravelSpending()}`);
   domUpdates.alterClassList('remove', 'hidden', myTripsPage);
   domUpdates.alterClassList('add', 'hidden', homePage);
   traveler.tripBook.forEach(trip => {
@@ -142,6 +144,14 @@ function displayTravelersTrips(){
   domUpdates.displayCategoryOfTrip(presentTrips, 'present')
   domUpdates.displayCategoryOfTrip(upcomingTrips, 'upcoming')
   domUpdates.displayCategoryOfTrip(pendingTrips, 'pending')
+}
+
+function displaySpending() {
+  if(spendingYearInput.value !== '0'){
+    const selectedYear = Number(spendingYearInput.value);
+    const spending = traveler.calculateAnnualTravelSpending(selectedYear);
+    domUpdates.displayOneLiners(totalSpendingDisplay, `${spending}`);
+  }
 }
 
 function returnHome() {

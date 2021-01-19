@@ -27,8 +27,8 @@ describe('Traveler', () => {
   });
 
   it('should calculate how much was spent on travel in a given year', () => {
-    expect(traveler1.calculateAnnualTravelSpending(2019)).to.equal('1056.00');
-    expect(traveler1.calculateAnnualTravelSpending(2021)).to.equal('6270.00');
+    expect(traveler1.calculateAnnualTravelSpending(2019)).to.equal('$1056.00');
+    expect(traveler1.calculateAnnualTravelSpending(2021)).to.equal('$6270.00');
     expect(traveler1.calculateAnnualTravelSpending(2018)).to.equal('Your spending is $0 for 2018. Must not have caught the travel bug, huh?');
   });
 
