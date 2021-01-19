@@ -6,13 +6,12 @@ let domUpdates = {
   },
 
   displayCategoryOfTrip(trips, tripCategory) {
-    // console.log(trips, tripCategory, trips.length > 0);
     if(trips.length > 0) {
       const tripCategoryDisplay = document.querySelector(`.${tripCategory}`);
       let displayContent = ''
       trips.forEach(trip => {
-        displayContent += `<div id='trip-${trip.id}' class='trip-card'>
-        <h2 class='trip-card-heading'>${trip.destination.destination}</h2><h2>${trip.departureDate}</h2><h2>${trip.durationInDays} Days</h2></div>`;
+        displayContent += `<div id='${trip.id}trip' class='trip-card'>
+        <h2 id='${trip.id}trip' class='trip-card-heading'>${trip.destination.destination}</h2><h2 id='${trip.id}trip'>${trip.departureDate}</h2><h2 id='${trip.id}trip'>${trip.durationInDays} Days</h2></div>`;
       })
       tripCategoryDisplay.innerHTML = displayContent;
     }
@@ -48,9 +47,20 @@ addNumbersToDropdowns(dropdown, numberChoices) {
      });
  },
 
- displayNewTripDetails(trip, element) {
+ displayTripDetails(trip, element) {
    element.classList.remove('hidden');
-   element.innerHTML = `<img class='trip-image' src=${trip.destination.image}><h3>You are traveling to ${trip.destination.destination}</h3><h3>You and ${trip.numberOfTravelers - 1} others will leave on ${trip.departureDate} and return ${trip.durationInDays} days later.</h3><h4>Standby for your agent to approve this trip and provide you with a list of suggested adventures at your destination.</h4>`;
+   let tensedLanguage, message;
+   if(trip.status === 'past') {
+     tensedLanguage = ['traveled', 'left', 'returned'];
+     message = 'We hope you enjoyed your adventure!'
+   } else if(trip.status === 'pending') {
+     tensedLanguage = ['would like to travel', 'plan to leave', 'return'];
+     message = 'This trip is pending. Standby for your agent to approve this trip and provide you with a list of suggested adventures at your destination.'
+   } else if(trip.status === 'present' || trip.status === 'upcoming') {
+     tensedLanguage = ['are traveling', 'leave', 'return'];
+     message = 'Your trip is approved! Standby for your agent to provide you with a list of suggested adventures at your destination.';
+   }
+   element.innerHTML = `<img class='trip-image' src=${trip.destination.image}><h3>You ${tensedLanguage[0]} to ${trip.destination.destination}</h3><h3>You and ${trip.numberOfTravelers - 1} others ${tensedLanguage[1]} on ${trip.departureDate} and ${tensedLanguage[2]} ${trip.durationInDays} days later.</h3><h4>${message}</h4>`;
  }
 }
 

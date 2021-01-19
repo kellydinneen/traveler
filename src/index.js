@@ -25,6 +25,7 @@ const totalSpendingDisplay = document.querySelector('.total-annual-spending');
 const travelerGreeting = document.querySelector('.user-greeting');
 const createTripForm = document.querySelector('.trip-form');
 const newTripDetails = document.querySelector('.new-trip-details');
+const tripDetailView = document.querySelector('.trip-detail-page');
 
 const durationInput = document.querySelector('.duration-input');
 const dateInput = document.querySelector('.departure-date-input');
@@ -40,6 +41,7 @@ homeButton.addEventListener('click', returnHome);
 continueButton.addEventListener('click', continueForm);
 backButton.addEventListener('click', goBackInForm);
 finishButton.addEventListener('click', createNewTrip);
+myTripsPage.addEventListener('click', viewTripDetails)
 
 // destinationsDropdown.addEventListener('change', updateDestinationSelection);
 // travelersDropdown.addEventListener('change', updateTravelersSelection);
@@ -67,8 +69,7 @@ function createNewTrip() {
     domUpdates.alterClassList('add', 'hidden', backButton);
     domUpdates.alterClassList('add', 'hidden', formPages[3]);
     const newTrip = new Trip(tripData, traveler.destinations);
-    domUpdates.displayNewTripDetails(newTrip, newTripDetails);
-    // networkRequests.postNewTrip(tripData);
+    domUpdates.displayTripDetails(newTrip, newTripDetails);
     networkRequests.createOrAlterTrip('trips', tripData, traveler, agent);
   } else {
     console.log('MISSING TRIP INFORMATION');
@@ -189,4 +190,13 @@ function resetForm() {
       domUpdates.alterClassList('add', 'hidden', page)
     }
   })
+}
+
+function viewTripDetails(event) {
+  if(event.target.classList.contains('trip-card') || event.target.parentNode.classList.contains('trip-card')){
+    const tripID = parseInt(event.target.id);
+    const trip = traveler.tripBook.find(entry => entry.id === tripID);
+    domUpdates.alterClassList('add', 'hidden', myTripsPage);
+    domUpdates.displayTripDetails(trip, tripDetailView);
+  }
 }
