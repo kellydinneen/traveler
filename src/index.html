@@ -7,18 +7,31 @@
   </head>
   <body>
     <header>
-      <div class='plane-logo home-button'></div>
+      <div class='plane-logo home-button hidden'></div>
+      <div id='dummy-plane' class='plane-logo'></div>
       <div class='header-buttons'>
-        <button class='header-button my-trips-button'>My Trips</button>
-        <button class='header-button new-trip-button'>Plan a Trip</button>
-        <button class='header-button browse-destinations-button'>Browse Destinations</button>
+        <button class='header-button my-trips-button hidden'>My Trips</button>
+        <button class='header-button new-trip-button hidden'>Plan a Trip</button>
+        <button class='header-button logout-button hidden'>Logout</button>
       </div>
     </header>
     <main>
-      <section class='login hidden'>
-        <div class='earth'></div>
+      <section class='login'>
+        <h1 class='login-welcome'>Welcome to Traveler</h1>
+        <form class='login-form'>
+        <label class='login-label' for='name-input'>Choose the name attached to your profile</label>
+        <select class="name-input" name="name-input">
+          <option value="0" disabled selected>Select your name</option>
+        </select>
+        <label class='login-label' for='id-input'>Enter the ID attached to your profile</label>
+        <input id='id-input' class='id-input' type='text' placeholder='your ID is a number between 1 and 50' value=''>
+        <button class='login-button' type='button'>Login</button>
+        <p class='login-error-message'></p>
+      </form>
+        <h3 class='agent-login-instructions'>If you are an agent, login here:</h3>
+        <button class='agent-login-button'>Agent Login</button>
       </section>
-      <section class='traveler-dashboard'>
+      <section class='traveler-dashboard hidden'>
         <h2 class='user-greeting'></h2>
         <form class='trip-form hidden'>
           <div class='created-trip-summary'>
