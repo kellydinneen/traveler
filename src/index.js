@@ -201,7 +201,12 @@ function displaySpending() {
 }
 
 function returnHome() {
-  domUpdates.alterClassList('add', 'hidden', myTripsPage);
+  const toHide = [myTripsPage, newTripDetails, tripDetailView];
+  toHide.forEach(item => {
+    if(!item.classList.contains('hidden')){
+      domUpdates.alterClassList('add', 'hidden', item);
+    }
+  })
   domUpdates.alterClassList('remove', 'hidden', homePage);
   resetForm();
 }
