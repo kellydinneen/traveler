@@ -31,8 +31,8 @@ let domUpdates = {
           title = item.destination;
           detail = `$${item.estimatedFlightCostPerPerson} flight`
         }
-        displayContent += `<div id='${item.id}-${property}-agent' class='agent-card'>
-        <h2 id='${item.id}-${property}-agent' class='agent-card-title'>${title}</h2><h2 id='${item.id}-${property}-agent' class='agent-card-detail'>${detail}</h2></div>`;
+        displayContent += `<div id='${item.id}agent' class='agent-card agent-${property}-card'>
+        <h2 id='${item.id}agent' class='agent-card-title'>${title}</h2><h2 id='${item.id}agent' class='agent-card-detail'>${detail}</h2></div>`;
       })
       list.innerHTML = displayContent;
   },
@@ -85,12 +85,12 @@ addNumbersToDropdowns(dropdown, numberChoices) {
      message = 'We hope you enjoyed your adventure!'
    } else if(trip.status === 'pending') {
      tensedLanguage = ['would like to travel', 'plan to leave', 'return'];
-     message = 'This trip is pending. Standby for your agent to approve this trip and provide you with a list of suggested adventures at your destination.'
+     message = 'This trip is pending. Standby for your agent to approve this trip and provide you with a list of suggested adventures at your destination:'
    } else if(trip.status === 'present' || trip.status === 'upcoming') {
      tensedLanguage = ['are traveling', 'leave', 'return'];
-     message = 'Your trip is approved! Standby for your agent to provide you with a list of suggested adventures at your destination.';
+     message = 'Your trip is approved! Standby for your agent to provide you with a list of suggested adventures at your destination:';
    }
-   element.innerHTML = `<img class='trip-image' src=${trip.destination.image}><h3>You ${tensedLanguage[0]} to ${trip.destination.destination}</h3><h3>You and ${trip.numberOfTravelers - 1} others ${tensedLanguage[1]} on ${trip.departureDate} and ${tensedLanguage[2]} ${trip.durationInDays} days later.</h3><h4>${message}</h4>`;
+   element.innerHTML = `<img class='trip-image' src=${trip.destination.image}><h3>You ${tensedLanguage[0]} to ${trip.destination.destination}</h3><h3>You and ${trip.numberOfTravelers - 1} others ${tensedLanguage[1]} on ${trip.departureDate} and ${tensedLanguage[2]} ${trip.durationInDays} days later.</h3><h4>${message}</h4><h4>${trip.suggestedActivities}</h4>`;
  }
 }
 

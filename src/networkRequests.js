@@ -13,7 +13,7 @@ const networkRequests = {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(trip)
     }
-    return fetch(`http://localhost:3001/api/v1/trips`, post)
+    return fetch(`http://localhost:3001/api/v1/${endpoint}`, post)
       .then(response => response.json())
       .then((response) => {
         Promise.all([
@@ -21,21 +21,13 @@ const networkRequests = {
           ])
           .then(data => {
             const newTripData = data[0].trips;
-            traveler.tripBook = traveler.getTrips(newTripData);
+            if(traveler !== undefined) {
+              traveler.tripBook = traveler.getTrips(newTripData);
+            }
             agent.trips = newTripData;
           });
 
       })
-  },
-
-  deleteTrip(tripID) {
-    const post = {
-      method: 'DELETE',
-      headers: {'Content-Type': 'application/json'},
-    }
-
-    return fetch(`http://localhost:3001/api/v1/trips/${tripID}`, post)
-      .then(response => response.json())
   }
 }
 
