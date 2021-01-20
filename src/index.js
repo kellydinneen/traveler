@@ -50,6 +50,9 @@ const agentDashboardDisplays = [
   document.querySelector('.trips'),
   document.querySelector('.destinations')
 ]
+const agentTripDetailsBox = document.querySelector('.details-for-agent');
+const suggestedActivities = document.querySelector('.suggested-activities-input');
+const submitSuggestionsButton = document.querySelector('.submit-suggested-activities')
 
 let traveler, agent;
 
@@ -66,6 +69,8 @@ myTripsPage.addEventListener('click', viewTripDetails);
 newTripButton.addEventListener('click', returnHome);
 spendingYearInput.addEventListener('change', displaySpending);
 logoutButton.addEventListener('click', returnToLoginPage);
+agentDashboard.addEventListener('click', displayTripDetailsForAgent);
+submitSuggestionsButton.addEventListener('click', submitSuggestions);
 
 function loadLoginDropdown(){
   return Promise.all([
@@ -255,15 +260,22 @@ function createNewTrip() {
       status:'pending',
       suggestedActivities:[]
     }
-    domUpdates.alterClassList('add', 'hidden', finishButton);
-    domUpdates.alterClassList('add', 'hidden', backButton);
-    domUpdates.alterClassList('add', 'hidden', formPages[3]);
+    const toHide = [finishButton, backButton, formPages[3]];
+    hideItems(toHide);
     const newTrip = new Trip(tripData, traveler.destinations);
     domUpdates.displayTripDetails(newTrip, newTripDetails);
     networkRequests.createOrAlterTrip('trips', tripData, traveler, agent);
   } else {
     console.log('MISSING TRIP INFORMATION');
   }
+}
+
+function hideItems(items) {
+  items.forEach(item => {
+    if(!item.classList.contains('hidden')){
+      domUpdates.alterClassList('add', 'hidden', item);
+    }
+  })
 }
 
 function checkForEmptyInputs() {
@@ -309,10 +321,17 @@ function adjustContinueButtonID(a, b, array) {
   }
 }
 
-function hideItems(items) {
-  items.forEach(item => {
-    if(!item.classList.contains('hidden')){
-      domUpdates.alterClassList('add', 'hidden', item);
-    }
-  })
+function displayTripDetailsForAgent(event) {
+  if(event.target.classList.contains('agent-trips-card') || event.target.parentNode.classList.contains('agent-trips-card')) {
+    agentTripDetailsBox.showModal();
+    agentTripDetailsBox.id = `${event.target.id}modal`;
+  }
+}
+
+function submitSuggestions() {
+  const trip = agent.trips.find(trip => trip.id === parseInt(agentTripDetailsBox.id));
+  const activities = suggestedActivities.value;
+  const tripData = {id: trip.id, suggestedActivities: activities.split(',')}
+  networkRequests.createOrAlterTrip('updateTrip', tripData, traveler, agent);
+  agentTripDetailsBox.close();
 }
