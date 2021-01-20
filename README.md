@@ -13,8 +13,7 @@ The details of this project are outlined in [this project spec](https://frontend
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Instructions](#setup-instructions)
-3. [How-To](#using-whats-cookin)
-4. [Challenges & Wins](#challenges-&-wins)
+3. [How-To](#using-the-site-as-a-traveler)
 5. [Appreciation](#appreciation)
 
 ## Introduction
