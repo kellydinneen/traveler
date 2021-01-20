@@ -49,12 +49,22 @@ let domUpdates = {
     }
   },
 
-addTextOptionsToDropdown(dropdown, array) {
+addTextOptionsToDropdown(dropdown, array, type) {
+    let itemTally = 1;
      array.forEach(item => {
        const newOption = document.createElement('option');
-       newOption.value = item.id;
-       newOption.innerText = item.name;
+       if(type === 'destination') {
+         newOption.value = item.id;
+         newOption.innerText = item.destination;
+       } else if(type === 'traveler') {
+         newOption.value = item.id;
+         newOption.innerText = item.name;
+       } else {
+         newOption.value = itemTally;
+         newOption.innerText = item;
+       }
        dropdown.appendChild(newOption);
+        itemTally++
      })
  },
 
