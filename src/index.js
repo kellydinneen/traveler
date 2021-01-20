@@ -15,6 +15,7 @@ const loginErrorMessage = document.querySelector('.login-error-message');
 const agentLoginButton = document.querySelector('.agent-login-button');
 
 const homeButton = document.querySelector('.home-button');
+const newTripButton = document.querySelector('.new-trip-button');
 const myTripsButton = document.querySelector('.my-trips-button');
 const logoutButton = document.querySelector('.logout-button');
 
@@ -62,7 +63,7 @@ continueButton.addEventListener('click', continueForm);
 backButton.addEventListener('click', goBackInForm);
 finishButton.addEventListener('click', createNewTrip);
 myTripsPage.addEventListener('click', viewTripDetails);
-// agentDashboard.addEventListener('click', viewDetailsForAgent);
+newTripButton.addEventListener('click', returnHome);
 spendingYearInput.addEventListener('change', displaySpending);
 logoutButton.addEventListener('click', returnToLoginPage);
 
@@ -158,7 +159,7 @@ function createCurrentTraveler(travelerData, tripData, destinationData) {
 function loadTravelerHomepage() {
   domUpdates.alterClassList('add', 'hidden', loginPage);
   domUpdates.alterClassList('add', 'hidden', loginLogo);
-  const homeElements = [homePage, myTripsButton, logoutButton, homeButton];
+  const homeElements = [homePage, myTripsButton, logoutButton, homeButton, newTripButton];
   homeElements.forEach(element => domUpdates.alterClassList('remove', 'hidden', element))
 }
 
@@ -172,7 +173,8 @@ function fadeInForm() {
 
 function displayTravelersTrips(){
   domUpdates.alterClassList('remove', 'hidden', myTripsPage);
-  domUpdates.alterClassList('add', 'hidden', homePage);
+  const toHide = [homePage, newTripDetails, tripDetailView];
+  hideItems(toHide);
   traveler.tripBook.forEach(trip => {
     if(trip.status !== 'pending'){
       trip.getTripTiming();
