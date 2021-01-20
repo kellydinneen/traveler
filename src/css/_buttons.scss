@@ -1,55 +1,26 @@
 
 .continue-button {
   @include back-forward-buttons($right-arrow);
+  font-size: 0;
 }
 
 .back-button {
   @include back-forward-buttons($left-arrow);
+  font-size: 0;
 }
 
 .finish-button {
   @include back-forward-buttons($checkmark);
+  font-size: 0;
   box-shadow: 0px 3px 10px 2px $mint-cream;
 }
 
-.glow {
-  box-shadow: 0px 3px 10px 10px $mint-cream;
-}
 
 .back-forward-buttons {
   display: flex;
   justify-content: space-between;
 }
 
-select {
-  margin: 20px;
-  height: 50px;
-  border-radius: 15px;
-  background-color: $mint-cream;
-  color: $blue-sapphire;
-  border: none;
-  font-family: $small-font;
-}
-
-option {
-  background-color: $mint-cream;
-  color: $blue-sapphire;
-}
-
-.id-input {
-  margin: 20px;
-  height: 20px;
-  width: 250px;
-  border-radius: 15px;
-  background-color: $mint-cream;
-  color: $blue-sapphire;
-  border: none;
-  font-family: $small-font;
-}
-
-.name-input {
-  width: 350px;
-}
 
 .login-button{
   font-family: $small-font;
@@ -63,10 +34,6 @@ option {
   margin-top: 20px;
 }
 
-// .header-buttons {
-//   display: flex;
-//   justify-content: space-between;
-// }
 
 .header-button {
   font-family: $title-font;
@@ -77,26 +44,6 @@ option {
   margin: 10px;
 }
 
-.new-trip-button {
-  // border-right: solid 5px $amaranthe;
-  // border-radius: 3px;
-}
-
-.agent-login-instructions {
-  color: $amaranthe;
-}
-
-.login-welcome{
-  color: $amaranthe;
-  font-style: italic;
-  font-size: 35px;
-}
-
-.login-label {
-  font-family: $small-font;
-  font-weight: 400;
-  font-size: 25px;
-}
 
 .agent-login-button {
   background-color: $rose-taupe;
@@ -109,7 +56,8 @@ option {
   font-size: 15px;
 }
 
-.login-error-message {
-  color: $sizzling-red;
-  font-family: $small-font;
+.plane-logo {
+  background-image: url('../images/paper-plane-red-outline.png');
+  width: 100px;
+  height: 100px;
 }

@@ -1,0 +1,21 @@
+.agent-dashboard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.agent-lists{
+  @include lists(row, space-around);
+}
+
+.agent-list {
+  @include scrollingList(250px, $rose-taupe);
+}
+
+.agent-card {
+  @extend .trip-card;
+}
+
+.agent-background {
+  background: $sizzling-red;
+}

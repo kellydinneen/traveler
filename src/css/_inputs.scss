@@ -1,0 +1,56 @@
+select {
+  margin: 20px;
+  height: 50px;
+  border-radius: 15px;
+  background-color: $mint-cream;
+  color: $blue-sapphire;
+  border: none;
+  font-family: $small-font;
+}
+
+option {
+  background-color: $mint-cream;
+  color: $blue-sapphire;
+}
+
+input {
+  margin: 10px;
+  margin-bottom: 15px;
+  padding: 20px;
+  border-radius: 15px;
+  font-family: $small-font;
+}
+
+label {
+  color: $blue-sapphire;
+  font-size: 2rem;
+  font-family: $title-font;
+  font-weight: bolder;
+}
+
+.name-input {
+  width: 350px;
+}
+
+.id-input {
+  margin: 20px;
+  height: 20px;
+  width: 250px;
+  border-radius: 15px;
+  background-color: $mint-cream;
+  color: $blue-sapphire;
+  border: none;
+  font-family: $small-font;
+}
+
+.date-inputs {
+  flex-direction: row;
+}
+
+.year-input {
+  width: 100px;
+}
+
+.hidden-label {
+  font-size: 0;
+}

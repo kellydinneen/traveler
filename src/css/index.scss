@@ -1,32 +1,24 @@
 @import 'variables';
 @import 'buttons';
-@import 'base';
+@import 'inputs';
+@import 'login';
+@import 'trip-form';
+@import 'my-trips';
+@import 'agent-dashboard';
 
 body {
   background: $sky-gradient;
   font-family: $title-font;
   color: $mint-cream;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
 }
 
 header {
-  // border: solid 2px black;
   width: 100%;
   height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-}
-
-.plane-logo {
-  background-image: url('../images/paper-plane-red-outline.png');
-  // border: solid 2px black;
-  width: 100px;
-  height: 100px;
-  // margin-bottom: 10px;
 }
 
 .user-greeting {
@@ -36,7 +28,6 @@ header {
 }
 
 .traveler-dashboard {
-  // border: solid 2px black;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -45,146 +36,72 @@ header {
   align-content: center;
 }
 
-.trip-form {
-  // border: solid 2px $mint-cream;
-  box-shadow: 0px 3px 10px 20px $mint-cream;
-  height: 400px;
-  width: 650px;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 30px;
-  margin-top: 100px;
+@media screen and (min-width: 500px) and (max-width: 800px)  {
+  .user-greeting {
+    font-size: 2rem;
+  }
+
+  .login-form {
+    width: 50%;
+  }
+
+  .name-input {
+    width: 90%;
+  }
+
+  .id-input {
+    width: 70%;
+  }
+
+  .trip-form {
+    width: 70%;
+  }
+
+  .trip-categories,
+  .agent-lists {
+    @include lists(column, flex-start);
+  }
+
+  .trip-list,
+  .agent-list {
+    @include scrollingList(375px, $rose-taupe);
+  }
+
 }
 
-.my-trips {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
+@media screen and (max-width: 500px)  {
+  .user-greeting {
+    font-size: 1.5rem;
+  }
 
-.trip-list {
-  background: $mint-cream;
-  color: $blue-sapphire;
-  border-radius: 15px;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  font-family: $small-font;
-  font-size: 10px;
-  width: 200px;
-  height: 350px;
-  padding: 10px;
-  margin: 10px;
-  box-shadow: 0px 3px 10px 3px $blue-sapphire;
-  overflow: scroll;
-}
+  .login-form {
+    width: 80%;
+  }
 
-.trip-list-heading {
-  border-bottom: solid 5px $amaranthe;
-  color: $rose-taupe;
-  font-family: $title-font;
-  padding: 5px;
-}
+  .id-input {
+    width: 70%;
+  }
 
-.trip-categories {
-  display: flex;
-  justify-content: space-between;
-}
+  .name-input {
+    width: 90%;
+  }
 
-.trip-card {
-  line-height: 15px;
-  width: 180px;
-  border-bottom: solid 2px $blue-sapphire;
-  margin: 5px;
-  padding: 10px;
+  .trip-form {
+    width: 70%;
+  }
 
-  &:hover {
-    box-shadow: 0px 3px 10px 2px $blue-sapphire;
+  .trip-categories,
+  .agent-lists {
+    @include lists(column, flex-start);
+  }
+
+  .trip-list,
+  .agent-list {
+    @include scrollingList(300px, $rose-taupe);
   }
 }
 
-label {
-  color: $blue-sapphire;
-  font-size: 2rem;
-  font-family: $title-font;
-  font-weight: bolder;
-}
 
-input {
-  margin: 10px;
-  margin-bottom: 15px;
-  padding: 20px;
-  border-radius: 15px;
-  font-family: $small-font;
-}
-
-.form-section {
-  display: flex;
-  flex-direction: column;
-}
-
-.created-trip-summary {
-  display: flex;
-}
-
-.trip-card-heading {
-  font-family: $title-font;
-}
-
-.trip-image {
-  height: 100px;
-  width: auto;
-}
-
-.section-heading {
-  color: $amaranthe;
-  background-color: $mint-cream;
-  padding: 7px;
-  border-radius: 15px;
-  border: solid 2px $sizzling-red;
-}
-
-.login {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.login-form {
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-  border-radius: 15px;
-  padding: 20px;
-  background: rgba(243, 247, 240, 0.7);
-  box-shadow: 0px 3px 10px 2px $blue-sapphire;;
-}
-
-.spending-display{
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  font-family: $small-font;
-  color: $mint-cream;
-}
-
-.year-input {
-  width: 100px;
-}
-
-.total-annual-spending {
-  color: $amaranthe;
-}
 
 .hidden {
   display: none;
