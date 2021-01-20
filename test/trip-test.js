@@ -9,7 +9,7 @@ import {
 
 let trip1, trip2, trip3;
 
-describe('Traveler', () => {
+describe('Trip', () => {
   beforeEach(() => {
     trip1 = new Trip(tripData[0], destinationData);
     trip2 = new Trip(tripData[1], destinationData);
