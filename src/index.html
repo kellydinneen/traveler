@@ -110,6 +110,40 @@
       </section>
       <section class='trip-detail-page'>
       </section>
+      <section class='agent-dashboard hidden'>
+        <article class='agent-client-list'>
+          <h2>Clients</h2>
+          <h3>Select a client for details</h3>
+          <div class='clients'></div>
+        </article>
+        <article class='agent-trip-list'>
+          <h2>Trips</h2>
+          <h3>Select a trip for details</h3>
+          <div class='trips'></div>
+        </article>
+        <article class='agent-destination-list'>
+          <h2>Destinations</h2>
+          <h3>Select a destination for details</h3>
+          <div class='destinations'></div>
+        </article>
+        <article class='annual-revenue-display'>
+          <h1>Total Annual Revenue For</h1>
+          <select class="agent-year-input" name="agent-year-input">
+            <option value="0" disabled selected>Select a year</option>
+            <option value="2022" selected>2022</option>
+            <option value="2021" selected>2021</option>
+            <option value="2020" selected>2020</option>
+            <option value="2019" selected>2019</option>
+          </select>
+          <h1 class='total-annual-revenue'><h1>
+        </article>
+      </section>
+      <dialog class='details-for-agent'>
+        <label for='suggested-activities-input'>Suggest some activities for this trip</label>
+        <input id='suggested-activities-input' class='suggested-activities-input' type='text' placeholder='e.g. sailing, cooking class, visiting Angkor Wat...' value=''>
+        <button class='approve-button'>Approve Trip</button>
+        <button class='cancel-button'>Cancel Trip</button>
+      </dialog>
     <main>
   </body>
 </html>

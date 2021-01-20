@@ -6,6 +6,7 @@ import networkRequests from './networkRequests';
 import domUpdates from './domUpdates';
 
 const loginPage = document.querySelector('.login');
+const agentDashboard = document.querySelector('.agent-dashboard');
 const homePage = document.querySelector('.traveler-dashboard');
 const myTripsPage = document.querySelector('.my-trips');
 const formPages = [
@@ -14,7 +15,13 @@ const formPages = [
   document.querySelector('#f_3'),
   document.querySelector('#f_4')
 ];
+const agentDashboardDisplays = [
+  document.querySelector('.clients'),
+  document.querySelector('.trips'),
+  document.querySelector('.destinations')
+]
 
+const agentLoginButton = document.querySelector('.agent-login-button');
 const travelerLoginButton = document.querySelector('.login-button');
 const myTripsButton = document.querySelector('.my-trips-button');
 const logoutButton = document.querySelector('.logout-button');
@@ -44,12 +51,14 @@ let traveler, agent;
 window.onload = loadLoginDropdown();
 
 travelerLoginButton.addEventListener('click', loadTravelerDashboard);
+agentLoginButton.addEventListener('click', loadAgentDashboard);
 myTripsButton.addEventListener('click', displayTravelersTrips);
 homeButton.addEventListener('click', returnHome);
 continueButton.addEventListener('click', continueForm);
 backButton.addEventListener('click', goBackInForm);
 finishButton.addEventListener('click', createNewTrip);
 myTripsPage.addEventListener('click', viewTripDetails);
+agentDashboard.addEventListener('click', viewDetailsForAgent);
 spendingYearInput.addEventListener('change', displaySpending);
 
 
@@ -70,23 +79,32 @@ function loadLoginDropdown(){
 
 function loadTravelerDashboard(){
   if(approveTravelerLogin()) {
-    return Promise.all([
-        networkRequests.getData('travelers'),
-        networkRequests.getData('trips'),
-        networkRequests.getData('destinations')
-      ])
-      .then(data => {
-        const travelerData = data[0].travelers;
-        const tripData = data[1].trips;
-        const destinationData = data[2].destinations;
-        buildPage(travelerData, tripData, destinationData);
-      })
-      .catch(error => console.log(error))
-    } else {
+    populatePageInfo('traveler');
+  } else {
       const errorMessage = 'Sorry, we do not recognize that combination of name and ID. HINT (for Travis) -- the dropdown menu lists names in order by ID, so, for example, the first name in the menu corresponds to ID "1".';
       domUpdates.displayOneLiners(loginErrorMessage, errorMessage);
     }
   }
+
+function loadAgentDashboard() {
+  populatePageInfo('agent');
+}
+
+function populatePageInfo(user) {
+  return Promise.all([
+      networkRequests.getData('travelers'),
+      networkRequests.getData('trips'),
+      networkRequests.getData('destinations')
+    ])
+    .then(data => {
+      const travelerData = data[0].travelers;
+      const tripData = data[1].trips;
+      const destinationData = data[2].destinations;
+      agent = new Agent(tripData, destinationData, travelerData);
+      buildPage(user);
+    })
+    .catch(error => console.log(error))
+}
 
 function approveTravelerLogin() {
   const idEntry = Number(travelerIDInput.value);
@@ -94,16 +112,32 @@ function approveTravelerLogin() {
   return idEntry === nameEntryID;
 }
 
-function buildPage(travelerData, tripData, destinationData){
-  createCurrentTraveler(travelerData, tripData, destinationData);
-  agent = new Agent(tripData, destinationData, travelerData);
-  loadHomepage();
+function buildPage(user){
+  if(user === 'traveler') {
+    buildTravelerPage();
+  } else if(user === 'agent') {
+    buildAgentPage();
+  }
+}
+
+function buildTravelerPage() {
+  createCurrentTraveler(agent.clients, agent.trips, agents.destinations);
+  loadTravelerHomepage();
   domUpdates.greetTraveler(traveler.name, traveler.type);
   window.setTimeout(fadeOutGreeting, 4000);
   window.setTimeout(fadeInForm, 4100);
   domUpdates.addTextOptionsToDropdown(destinationsDropdown, destinationData);
   const travelerOptions = [1,2,3,4,5,6,7,8,9,10];
   domUpdates.addNumbersToDropdowns(travelersDropdown, travelerOptions);
+}
+
+function buildAgentPage() {
+  domUpdates.alterClassList('add', 'hidden', loginPage);
+  const agentElements = [agentDashboard, logoutButton];
+  agentElements.forEach(element => domUpdates.alterClassList('remove', 'hidden', element))
+  agentDashboardDisplays.forEach(display => {
+    domUpdates.displayListForAgent(display, display.classList[0], agent);
+  });
 }
 
 function createCurrentTraveler(travelerData, tripData, destinationData) {
@@ -113,7 +147,7 @@ function createCurrentTraveler(travelerData, tripData, destinationData) {
   traveler = new Traveler(currentTravelerData, tripData, destinationData);
 }
 
-function loadHomepage() {
+function loadTravelerHomepage() {
   domUpdates.alterClassList('add', 'hidden', loginPage);
   domUpdates.alterClassList('add', 'hidden', loginLogo);
   const homeElements = [homePage, myTripsButton, logoutButton, homeButton];
@@ -243,4 +277,8 @@ function goBackInForm() {
     domUpdates.alterClassList('remove', 'hidden', continueButton);
     domUpdates.alterClassList('add', 'hidden', finishButton);
   }
+}
+
+function viewDetailsForAgent() {
+  return 1;
 }
