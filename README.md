@@ -3,6 +3,7 @@
 #### Instructor: David Whitaker
 
 GitHub Pages Link: https://kellydinneen.github.io/traveler/
+
 The details of this project are outlined in [this project spec](https://frontend.turing.io/projects/travel-tracker.html)
 
 ### Contributors
