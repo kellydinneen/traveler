@@ -94,7 +94,7 @@ At any time, a user can choose to view a selected recipe in more detail. After c
 A travel agent can login by clicking the "Agent Login" button at the bottom of the login page, which takes them to the agent dashboar. There is currently no authentication process for the agent, but in a future iteration of this project dealing with any real users, the agent would be required to enter a username and password. 
 
 ### Agent Dashboard
-The agent dashboard displays all trips, clients, and destinations. In the current iteration, an agent cannot interact with these items, but a feature of future iterations could be that an agent can click on any trip to approve it and add suggested activities for the traveler. The agent can return to the login page by clicking 'Logout'.
+The agent dashboard displays all trips, clients, and destinations. An agent can click on any trip to add suggested activities for the traveler. The agent can return to the login page by clicking 'Logout'.
 
 ## Mobile Friendly Responsive Design
 
