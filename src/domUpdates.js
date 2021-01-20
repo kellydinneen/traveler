@@ -17,6 +17,26 @@ let domUpdates = {
     }
   },
 
+  displayListForAgent(list, property, agent) {
+      let displayContent = ''
+      let title, detail;
+      agent[property].forEach(item => {
+        if(property === 'trips') {
+          title = item.destination.destination;
+          detail = `${item.departureDate}, ${item.durationInDays} days, ${item.numberOfTravelers} travelers`
+        } else if(property === 'clients') {
+          title = item.name;
+          detail = `${item.tripBook.length} total trips`
+        } else if(property === 'destinations') {
+          title = item.destination;
+          detail = `$${item.estimatedFlightCostPerPerson} flight`
+        }
+        displayContent += `<div id='${item.id}-${property}-agent' class='agent-${property}-card'>
+        <h2 id='${item.id}-${property}-agent' class='agent-card-title'>${title}</h2><h2 id='${item.id}-${property}-agent' class='agent-card-detail'>${detail}</h2></div>`;
+      })
+      list.innerHTML = displayContent;
+  },
+
   displayOneLiners(element, text) {
     element.innerText = text;
   },
