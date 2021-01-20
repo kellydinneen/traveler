@@ -62,7 +62,7 @@ continueButton.addEventListener('click', continueForm);
 backButton.addEventListener('click', goBackInForm);
 finishButton.addEventListener('click', createNewTrip);
 myTripsPage.addEventListener('click', viewTripDetails);
-agentDashboard.addEventListener('click', viewDetailsForAgent);
+// agentDashboard.addEventListener('click', viewDetailsForAgent);
 spendingYearInput.addEventListener('change', displaySpending);
 logoutButton.addEventListener('click', returnToLoginPage);
 
@@ -129,16 +129,6 @@ function buildTravelerPage(tripData, destinationData, travelerData) {
   populateNewTripFormDropdowns();
 }
 
-function populateNewTripFormDropdowns() {
-  const possibleMonths = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const possibleDates = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
-  const possibleNumbersOfTravelers = [1,2,3,4,5,6,7,8,9,10];
-  domUpdates.addTextOptionsToDropdown(destinationsDropdown, agent.destinations, 'destination');
-  domUpdates.addTextOptionsToDropdown(monthsDropdown, possibleMonths,'month');
-  domUpdates.addNumbersToDropdowns(daysDropdown, possibleDates);
-  domUpdates.addNumbersToDropdowns(travelersDropdown, possibleNumbersOfTravelers);
-}
-
 function buildAgentPage() {
   domUpdates.alterClassList('add', 'agent-background', page);
   domUpdates.alterClassList('add', 'hidden', loginPage);
@@ -147,6 +137,16 @@ function buildAgentPage() {
   agentDashboardDisplays.forEach(display => {
     domUpdates.displayListForAgent(display, display.classList[0], agent);
   });
+}
+
+function populateNewTripFormDropdowns() {
+  const possibleMonths = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const possibleDates = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
+  const possibleNumbersOfTravelers = [1,2,3,4,5,6,7,8,9,10];
+  domUpdates.addTextOptionsToDropdown(destinationsDropdown, agent.destinations, 'destination');
+  domUpdates.addTextOptionsToDropdown(monthsDropdown, possibleMonths,'month');
+  domUpdates.addNumbersToDropdowns(daysDropdown, possibleDates);
+  domUpdates.addNumbersToDropdowns(travelersDropdown, possibleNumbersOfTravelers);
 }
 
 function createCurrentTraveler(travelerData, tripData, destinationData) {
@@ -180,6 +180,10 @@ function displayTravelersTrips(){
   });
   spendingYearInput.value = 0;
   domUpdates.displayOneLiners(totalSpendingDisplay, '');
+  displayTripLists();
+}
+
+function displayTripLists() {
   const tripStatusValues = ['past', 'present', 'upcoming', 'pending'];
   tripStatusValues.forEach(status => {
     const trips = traveler.getTripsByStatus(status);
@@ -238,14 +242,7 @@ function viewTripDetails(event) {
 }
 
 function createNewTrip() {
-  if(
-    destinationsDropdown.value !== 0 &&
-    newTripYearsDropdown.value !== 0 &&
-    monthsDropdown.value !== 0 &&
-    daysDropdown.value !== 0 &&
-    durationInput.value !== "" &&
-    travelersDropdown.value !== 0
-  ){
+  if(checkForEmptyInputs()){
     const tripData = {
       id: Number(agent.trips.length),
       userID: Number(traveler.id),
@@ -267,6 +264,15 @@ function createNewTrip() {
   }
 }
 
+function checkForEmptyInputs() {
+  return destinationsDropdown.value !== 0 &&
+  newTripYearsDropdown.value !== 0 &&
+  monthsDropdown.value !== 0 &&
+  daysDropdown.value !== 0 &&
+  durationInput.value !== "" &&
+  travelersDropdown.value !== 0
+}
+
 function formatDate() {
   return `${newTripYearsDropdown.value}/${monthsDropdown.value}/${daysDropdown.value}`;
 }
@@ -278,13 +284,7 @@ function continueForm() {
   domUpdates.alterClassList('add', 'hidden', currentFormPage);
   domUpdates.alterClassList('remove', 'hidden', nextFormPage);
   continueButton.id = `${pageNumber + 1}`;
-  if (continueButton.id === '1') {
-    domUpdates.alterClassList('remove', 'hidden', backButton);
-  }
-  if(continueButton.id === '3') {
-    domUpdates.alterClassList('add', 'hidden', continueButton);
-    domUpdates.alterClassList('remove', 'hidden', finishButton);
-  }
+  adjustContinueButtonID('1','3', ['remove', 'add']);
 }
 
 function goBackInForm() {
@@ -294,14 +294,18 @@ function goBackInForm() {
   domUpdates.alterClassList('add', 'hidden', currentFormPage);
   domUpdates.alterClassList('remove', 'hidden', previousFormPage);
   continueButton.id = `${pageNumber - 1}`;
-  if (continueButton.id === '0') {
-    domUpdates.alterClassList('add', 'hidden', backButton);
-  } else if (continueButton.id === '2') {
-    domUpdates.alterClassList('remove', 'hidden', continueButton);
-    domUpdates.alterClassList('add', 'hidden', finishButton);
-  }
+  adjustContinueButtonID('0','2', ['add', 'remove'])
 }
 
+function adjustContinueButtonID(a, b, array) {
+  if (continueButton.id === a) {
+    domUpdates.alterClassList(array[0], 'hidden', backButton);
+  }
+  if(continueButton.id === b) {
+    domUpdates.alterClassList(array[1], 'hidden', continueButton);
+    domUpdates.alterClassList(array[0], 'hidden', finishButton);
+  }
+}
 
 function hideItems(items) {
   items.forEach(item => {
@@ -309,8 +313,4 @@ function hideItems(items) {
       domUpdates.alterClassList('add', 'hidden', item);
     }
   })
-}
-
-function viewDetailsForAgent() {
-  return 1;
 }
