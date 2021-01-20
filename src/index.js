@@ -5,6 +5,7 @@ import Agent from './agent';
 import networkRequests from './networkRequests';
 import domUpdates from './domUpdates';
 
+const page = document.querySelector('body');
 const loginPage = document.querySelector('.login');
 const loginLogo = document.querySelector('#dummy-plane');
 const travelerNameInput = document.querySelector('.name-input');
@@ -139,6 +140,7 @@ function populateNewTripFormDropdowns() {
 }
 
 function buildAgentPage() {
+  domUpdates.alterClassList('add', 'agent-background', page);
   domUpdates.alterClassList('add', 'hidden', loginPage);
   const agentElements = [agentDashboard, logoutButton];
   agentElements.forEach(element => domUpdates.alterClassList('remove', 'hidden', element))
@@ -205,6 +207,7 @@ function returnToLoginPage() {
   hideItems(toHide);
   domUpdates.alterClassList('remove', 'hidden', loginPage);
   domUpdates.alterClassList('remove', 'hidden', loginLogo);
+  domUpdates.alterClassList('remove', 'agent-background', page);
   travelerNameInput.value = 0;
   travelerIDInput.value = '';
 }

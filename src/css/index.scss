@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'buttons';
-@import 'base';
+@import 'breakpoints';
+@import 'agent-dashboard';
 
 body {
   background: $sky-gradient;
@@ -61,30 +62,11 @@ header {
 }
 
 .my-trips {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  @include lists(column, space-between);
 }
 
 .trip-list {
-  background: $mint-cream;
-  color: $blue-sapphire;
-  border-radius: 15px;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  font-family: $small-font;
-  font-size: 10px;
-  width: 200px;
-  height: 350px;
-  padding: 10px;
-  margin: 10px;
-  box-shadow: 0px 3px 10px 3px $blue-sapphire;
-  overflow: scroll;
+  @include scrollingList(200px, $blue-sapphire)
 }
 
 .trip-list-heading {
@@ -194,6 +176,8 @@ input {
 .hidden-label {
   font-size: 0;
 }
+
+
 .hidden {
   display: none;
 }

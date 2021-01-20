@@ -31,7 +31,7 @@ let domUpdates = {
           title = item.destination;
           detail = `$${item.estimatedFlightCostPerPerson} flight`
         }
-        displayContent += `<div id='${item.id}-${property}-agent' class='agent-${property}-card'>
+        displayContent += `<div id='${item.id}-${property}-agent' class='agent-card'>
         <h2 id='${item.id}-${property}-agent' class='agent-card-title'>${title}</h2><h2 id='${item.id}-${property}-agent' class='agent-card-detail'>${detail}</h2></div>`;
       })
       list.innerHTML = displayContent;
