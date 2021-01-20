@@ -87,7 +87,7 @@ function loadTravelerDashboard(){
   if(approveTravelerLogin()) {
     populatePageInfo('traveler');
   } else {
-      const errorMessage = 'Sorry, we do not recognize that combination of name and ID. HINT (for Travis) -- the dropdown menu lists names in order by ID, so, for example, the first name in the menu corresponds to ID "1".';
+      const errorMessage = 'Sorry, we do not recognize that combination of name and ID. HINT (for David) -- the dropdown menu lists names in order by ID, so, for example, the first name in the menu corresponds to ID "1".';
       domUpdates.displayOneLiners(loginErrorMessage, errorMessage);
     }
   }
