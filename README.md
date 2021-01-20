@@ -78,16 +78,13 @@ You will see that we have provided a set test data file to make testing much smo
 The website loads to a login page where a user can select their name and enter their ID. If this login information is correct, they will be taken to their dashboard upon clicking the "Login" button. HINT: because this is built with a fake data set, anyone testing the site can 'login' for a fake user by entering the ID that matches the order of the user's name in the login dropdown menu. E.g. Click the **1st** name in the dropdown and enter **1** as the ID.
 
 ### Scheduling a Trip
-From their dashboard, a user can navigate through a form and provide various pieces of information about their trip, including destination, departure date, total number of days, and total number of travelers. When they click the checkmark at the end of this form, their trip will be added to their tripbook and will be marked a 'pending' until travel agent approval.
+From their dashboard, a user can navigate through a form and provide various pieces of information about their trip, including destination, departure date, total number of days, and total number of travelers. When they click the checkmark at the end of this form, their trip will be added to their tripbook and will be marked as 'pending' until travel agent approval.
 
 ### 'My Trips' Page
 Upon clicking 'My Trips,' a user will be taken to a page with a list of their trips organized by status ('past', 'present', 'upcoming', or 'pending'). At the bottom of this page a user can select a year for which to calculate their total travel spending. By clicking on any trip, the user will be taken to that trip's details, including a picture of the trip's destination.
 
 ### Logout
-Additionally, their is a search bar. Here a user can search for any recipe by title, ingredients, or tags related to a recipe. This search will filter through the Whats Cookin Cook Book and display any recipes related to the user's serach. If a user uses the search bar while viewing the "My Favorites" tab, the search terms will only filter favorited recipes.
-
-### Viewing Recipe Details
-At any time, a user can choose to view a selected recipe in more detail. After clicking `View Recipe`, the user is provdied with a recipe card. The recipe card displays all ingredients and instructions for the selected recipe.
+A user can exit their dashboard and return to the login page by clicking the "Logout" button in the header.
 
 ## Using the Site as an Agent
 
@@ -95,7 +92,7 @@ At any time, a user can choose to view a selected recipe in more detail. After c
 A travel agent can login by clicking the "Agent Login" button at the bottom of the login page, which takes them to the agent dashboar. There is currently no authentication process for the agent, but in a future iteration of this project dealing with any real users, the agent would be required to enter a username and password. 
 
 ### Agent Dashboard
-The agent dashboard displays all trips, clients, and destinations. An agent can click on any trip to add suggested activities for the traveler. The agent can return to the login page by clicking 'Logout'.
+The agent dashboard displays all trips, clients, and destinations. An agent can click on any trip to add suggested activities for the traveler. The agent can return to the login page by clicking 'Logout,' just like a traveler.
 
 ## Mobile Friendly Responsive Design
 
