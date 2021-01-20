@@ -41,7 +41,10 @@ const tripDetailView = document.querySelector('.trip-detail-page');
 const travelerNameInput = document.querySelector('.name-input');
 const travelerIDInput = document.querySelector('.id-input');
 const durationInput = document.querySelector('.duration-input');
-const dateInput = document.querySelector('.departure-date-input');
+const newTripYearsDropdown = document.querySelector('.new-trip-year-input');
+const monthsDropdown = document.querySelector('.new-trip-month-input');
+const daysDropdown = document.querySelector('.new-trip-date-input');
+// const dateInput = document.querySelector('.departure-date-input');
 const travelersDropdown = document.querySelector('.travel-party-input');
 const destinationsDropdown = document.querySelector('.destination-input');
 const spendingYearInput = document.querySelector('.year-input');
@@ -72,7 +75,7 @@ function loadLoginDropdown(){
     ])
     .then(data => {
       const travelerData = data[0].travelers;
-      domUpdates.addTextOptionsToDropdown(travelerNameInput, travelerData);
+      domUpdates.addTextOptionsToDropdown(travelerNameInput, travelerData, 'traveler');
     })
     .catch(error => console.log(error))
 }
@@ -121,14 +124,23 @@ function buildPage(user){
 }
 
 function buildTravelerPage() {
-  createCurrentTraveler(agent.clients, agent.trips, agents.destinations);
+  createCurrentTraveler(agent.clients, agent.trips, agent.destinations);
+  console.log()
   loadTravelerHomepage();
   domUpdates.greetTraveler(traveler.name, traveler.type);
   window.setTimeout(fadeOutGreeting, 4000);
   window.setTimeout(fadeInForm, 4100);
-  domUpdates.addTextOptionsToDropdown(destinationsDropdown, destinationData);
-  const travelerOptions = [1,2,3,4,5,6,7,8,9,10];
-  domUpdates.addNumbersToDropdowns(travelersDropdown, travelerOptions);
+  populateNewTripFormDropdowns();
+}
+
+function populateNewTripFormDropdowns() {
+  const possibleMonths = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const possibleDates = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
+  const possibleNumbersOfTravelers = [1,2,3,4,5,6,7,8,9,10];
+  domUpdates.addTextOptionsToDropdown(destinationsDropdown, agent.destinations, 'destination');
+  domUpdates.addTextOptionsToDropdown(monthsDropdown, possibleMonths,'month');
+  domUpdates.addNumbersToDropdowns(daysDropdown, possibleDates);
+  domUpdates.addNumbersToDropdowns(travelersDropdown, possibleNumbersOfTravelers);
 }
 
 function buildAgentPage() {
@@ -222,7 +234,9 @@ function viewTripDetails(event) {
 function createNewTrip() {
   if(
     destinationsDropdown.value !== 0 &&
-    dateInput.value !== "" &&
+    newTripYearsDropdown.value !== 0 &&
+    monthsDropdown.value !== 0 &&
+    daysDropdown.value !== 0 &&
     durationInput.value !== "" &&
     travelersDropdown.value !== 0
   ){
@@ -231,7 +245,7 @@ function createNewTrip() {
       userID: Number(traveler.id),
       destinationID: Number(destinationsDropdown.value),
       travelers: Number(travelersDropdown.value),
-      date: `${dateInput.value}`,
+      date: `${formatDate()}`,
       duration: Number(durationInput.value),
       status:'pending',
       suggestedActivities:[]
@@ -246,6 +260,10 @@ function createNewTrip() {
   } else {
     console.log('MISSING TRIP INFORMATION');
   }
+}
+
+function formatDate() {
+  return `${newTripYearsDropdown.value}/${monthsDropdown.value}/${daysDropdown.value}`;
 }
 
 function continueForm() {

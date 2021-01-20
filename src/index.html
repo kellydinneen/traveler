@@ -47,8 +47,17 @@
             </select>
           </div>
           <div id='f_2' class='form-section hidden'>
-            <label for='departure-date-input'>When do you want to leave?</label>
-            <input id='departure-date-input' class='departure-date-input' type='text' placeholder='enter a departure date' value=''>
+            <select class="new-trip-year-input" name="new-trip-year-input">
+              <option value="0" disabled selected>year</option>
+              <option value="2022" selected>2022</option>
+              <option value="2021" selected>2021</option>
+            </select>
+            <select class="new-trip-month-input" name="new-trip-month-input">
+              <option value="0" disabled selected>month</option>
+            </select>
+            <select class="new-trip-date-input" name="new-trip-date-input">
+              <option value="0" disabled selected>day</option>
+            </select>
           </div>
           <div id='f_3' class='form-section hidden'>
             <label for='duration-input'>How long will you stay?</label>
