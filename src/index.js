@@ -44,7 +44,6 @@ const durationInput = document.querySelector('.duration-input');
 const newTripYearsDropdown = document.querySelector('.new-trip-year-input');
 const monthsDropdown = document.querySelector('.new-trip-month-input');
 const daysDropdown = document.querySelector('.new-trip-date-input');
-// const dateInput = document.querySelector('.departure-date-input');
 const travelersDropdown = document.querySelector('.travel-party-input');
 const destinationsDropdown = document.querySelector('.destination-input');
 const spendingYearInput = document.querySelector('.year-input');
@@ -63,11 +62,7 @@ finishButton.addEventListener('click', createNewTrip);
 myTripsPage.addEventListener('click', viewTripDetails);
 agentDashboard.addEventListener('click', viewDetailsForAgent);
 spendingYearInput.addEventListener('change', displaySpending);
-
-
-// destinationsDropdown.addEventListener('change', updateDestinationSelection);
-// travelersDropdown.addEventListener('change', updateTravelersSelection);
-// durationInput.addEventListener('change', updateDurationSelection);
+logoutButton.addEventListener('click', returnToLoginPage);
 
 function loadLoginDropdown(){
   return Promise.all([
@@ -104,7 +99,7 @@ function populatePageInfo(user) {
       const tripData = data[1].trips;
       const destinationData = data[2].destinations;
       agent = new Agent(tripData, destinationData, travelerData);
-      buildPage(user);
+      buildPage(user, tripData, destinationData, travelerData);
     })
     .catch(error => console.log(error))
 }
@@ -115,17 +110,16 @@ function approveTravelerLogin() {
   return idEntry === nameEntryID;
 }
 
-function buildPage(user){
+function buildPage(user, tripData, destinationData, travelerData){
   if(user === 'traveler') {
-    buildTravelerPage();
+    buildTravelerPage(tripData, destinationData, travelerData);
   } else if(user === 'agent') {
     buildAgentPage();
   }
 }
 
-function buildTravelerPage() {
-  createCurrentTraveler(agent.clients, agent.trips, agent.destinations);
-  console.log()
+function buildTravelerPage(tripData, destinationData, travelerData) {
+  createCurrentTraveler(travelerData, tripData, destinationData);
   loadTravelerHomepage();
   domUpdates.greetTraveler(traveler.name, traveler.type);
   window.setTimeout(fadeOutGreeting, 4000);
@@ -155,7 +149,6 @@ function buildAgentPage() {
 function createCurrentTraveler(travelerData, tripData, destinationData) {
   const currentTravelerID = Number(travelerIDInput.value);
   const currentTravelerData = travelerData.find(entry => entry.id === currentTravelerID);
-  console.log(currentTravelerData, currentTravelerID);
   traveler = new Traveler(currentTravelerData, tripData, destinationData);
 }
 
@@ -182,14 +175,13 @@ function displayTravelersTrips(){
       trip.getTripTiming();
     }
   });
-  let pastTrips = traveler.getTripsByStatus('past');
-  let presentTrips = traveler.getTripsByStatus('present');
-  let upcomingTrips = traveler.getTripsByStatus('upcoming');
-  let pendingTrips = traveler.getTripsByStatus('pending');
-  domUpdates.displayCategoryOfTrip(pastTrips, 'past')
-  domUpdates.displayCategoryOfTrip(presentTrips, 'present')
-  domUpdates.displayCategoryOfTrip(upcomingTrips, 'upcoming')
-  domUpdates.displayCategoryOfTrip(pendingTrips, 'pending')
+  spendingYearInput.value = 0;
+  domUpdates.displayOneLiners(totalSpendingDisplay, '');
+  const tripStatusValues = ['past', 'present', 'upcoming', 'pending'];
+  tripStatusValues.forEach(status => {
+    const trips = traveler.getTripsByStatus(status);
+    domUpdates.displayCategoryOfTrip(trips, status);
+  })
 }
 
 function displaySpending() {
@@ -202,13 +194,18 @@ function displaySpending() {
 
 function returnHome() {
   const toHide = [myTripsPage, newTripDetails, tripDetailView];
-  toHide.forEach(item => {
-    if(!item.classList.contains('hidden')){
-      domUpdates.alterClassList('add', 'hidden', item);
-    }
-  })
+  hideItems(toHide);
   domUpdates.alterClassList('remove', 'hidden', homePage);
   resetForm();
+}
+
+function returnToLoginPage() {
+  const toHide = [homePage, myTripsPage, newTripDetails, tripDetailView, createTripForm, agentDashboard, myTripsButton, logoutButton, homeButton];
+  hideItems(toHide);
+  domUpdates.alterClassList('remove', 'hidden', loginPage);
+  domUpdates.alterClassList('remove', 'hidden', loginLogo);
+  travelerNameInput.value = 0;
+  travelerIDInput.value = '';
 }
 
 function resetForm() {
@@ -255,7 +252,6 @@ function createNewTrip() {
       status:'pending',
       suggestedActivities:[]
     }
-    console.log(tripData);
     domUpdates.alterClassList('add', 'hidden', finishButton);
     domUpdates.alterClassList('add', 'hidden', backButton);
     domUpdates.alterClassList('add', 'hidden', formPages[3]);
@@ -300,6 +296,15 @@ function goBackInForm() {
     domUpdates.alterClassList('remove', 'hidden', continueButton);
     domUpdates.alterClassList('add', 'hidden', finishButton);
   }
+}
+
+
+function hideItems(items) {
+  items.forEach(item => {
+    if(!item.classList.contains('hidden')){
+      domUpdates.alterClassList('add', 'hidden', item);
+    }
+  })
 }
 
 function viewDetailsForAgent() {
