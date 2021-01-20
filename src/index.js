@@ -6,47 +6,48 @@ import networkRequests from './networkRequests';
 import domUpdates from './domUpdates';
 
 const loginPage = document.querySelector('.login');
-const agentDashboard = document.querySelector('.agent-dashboard');
+const loginLogo = document.querySelector('#dummy-plane');
+const travelerNameInput = document.querySelector('.name-input');
+const travelerIDInput = document.querySelector('.id-input');
+const travelerLoginButton = document.querySelector('.login-button');
+const loginErrorMessage = document.querySelector('.login-error-message');
+const agentLoginButton = document.querySelector('.agent-login-button');
+
+const homeButton = document.querySelector('.home-button');
+const myTripsButton = document.querySelector('.my-trips-button');
+const logoutButton = document.querySelector('.logout-button');
+
 const homePage = document.querySelector('.traveler-dashboard');
-const myTripsPage = document.querySelector('.my-trips');
+const travelerGreeting = document.querySelector('.user-greeting');
+const createTripForm = document.querySelector('.trip-form');
 const formPages = [
   document.querySelector('#f_1'),
   document.querySelector('#f_2'),
   document.querySelector('#f_3'),
   document.querySelector('#f_4')
 ];
-const agentDashboardDisplays = [
-  document.querySelector('.clients'),
-  document.querySelector('.trips'),
-  document.querySelector('.destinations')
-]
-
-const agentLoginButton = document.querySelector('.agent-login-button');
-const travelerLoginButton = document.querySelector('.login-button');
-const myTripsButton = document.querySelector('.my-trips-button');
-const logoutButton = document.querySelector('.logout-button');
-const homeButton = document.querySelector('.home-button');
-const continueButton = document.querySelector('.continue-button');
-const backButton = document.querySelector('.back-button');
-const finishButton = document.querySelector('.finish-button');
-
-const loginLogo = document.querySelector('#dummy-plane');
-const loginErrorMessage = document.querySelector('.login-error-message');
-const totalSpendingDisplay = document.querySelector('.total-annual-spending');
-const travelerGreeting = document.querySelector('.user-greeting');
-const createTripForm = document.querySelector('.trip-form');
-const newTripDetails = document.querySelector('.new-trip-details');
-const tripDetailView = document.querySelector('.trip-detail-page');
-
-const travelerNameInput = document.querySelector('.name-input');
-const travelerIDInput = document.querySelector('.id-input');
 const durationInput = document.querySelector('.duration-input');
 const newTripYearsDropdown = document.querySelector('.new-trip-year-input');
 const monthsDropdown = document.querySelector('.new-trip-month-input');
 const daysDropdown = document.querySelector('.new-trip-date-input');
 const travelersDropdown = document.querySelector('.travel-party-input');
 const destinationsDropdown = document.querySelector('.destination-input');
+const continueButton = document.querySelector('.continue-button');
+const backButton = document.querySelector('.back-button');
+const finishButton = document.querySelector('.finish-button');
+const newTripDetails = document.querySelector('.new-trip-details');
+
+const myTripsPage = document.querySelector('.my-trips');
 const spendingYearInput = document.querySelector('.year-input');
+const totalSpendingDisplay = document.querySelector('.total-annual-spending');
+const tripDetailView = document.querySelector('.trip-detail-page');
+
+const agentDashboard = document.querySelector('.agent-dashboard');
+const agentDashboardDisplays = [
+  document.querySelector('.clients'),
+  document.querySelector('.trips'),
+  document.querySelector('.destinations')
+]
 
 let traveler, agent;
 
