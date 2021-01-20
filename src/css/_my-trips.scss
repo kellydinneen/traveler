@@ -1,0 +1,61 @@
+.section-heading {
+  color: $amaranthe;
+  background-color: $mint-cream;
+  padding: 7px;
+  border-radius: 15px;
+  border: solid 2px $sizzling-red;
+}
+
+.spending-display{
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-family: $small-font;
+  color: $mint-cream;
+}
+
+.my-trips {
+  @include lists(column, space-between);
+}
+
+.trip-list {
+  @include scrollingList(200px, $blue-sapphire)
+}
+
+.trip-list-heading {
+  border-bottom: solid 5px $amaranthe;
+  color: $rose-taupe;
+  font-family: $title-font;
+  padding: 5px;
+}
+
+.trip-categories {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trip-card {
+  line-height: 15px;
+  width: 180px;
+  border-bottom: solid 2px $blue-sapphire;
+  margin: 5px;
+  padding: 10px;
+
+  &:hover {
+    box-shadow: 0px 3px 10px 2px $blue-sapphire;
+  }
+}
+
+
+.trip-card-heading {
+  font-family: $title-font;
+}
+
+.trip-image {
+  height: 200px;
+  width: auto;
+}
+
+.total-annual-spending {
+  color: $amaranthe;
+}
