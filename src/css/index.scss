@@ -37,6 +37,10 @@ header {
 }
 
 @media screen and (min-width: 500px) and (max-width: 800px)  {
+  .user-greeting {
+    font-size: 2rem;
+  }
+
   .login-form {
     width: 50%;
   }
@@ -46,6 +50,10 @@ header {
   }
 
   .id-input {
+    width: 70%;
+  }
+
+  .trip-form {
     width: 70%;
   }
 
@@ -62,6 +70,10 @@ header {
 }
 
 @media screen and (max-width: 500px)  {
+  .user-greeting {
+    font-size: 1.5rem;
+  }
+
   .login-form {
     width: 80%;
   }
@@ -72,6 +84,10 @@ header {
 
   .name-input {
     width: 90%;
+  }
+
+  .trip-form {
+    width: 70%;
   }
 
   .trip-categories,
