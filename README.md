@@ -2,6 +2,7 @@
 #### Turing School of Software Design - Mod2 Final Solo Project
 #### Instructor: David Whitaker
 
+GitHub Pages Link: https://kellydinneen.github.io/traveler/
 The details of this project are outlined in [this project spec](https://frontend.turing.io/projects/travel-tracker.html)
 
 ### Contributors
@@ -44,7 +45,7 @@ npm install
 To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text and a pink background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
 
 ## View Our Code in Action
-Simply visit our deployed site [here]()
+Simply visit our deployed site [here](https://kellydinneen.github.io/traveler/)
 
 OR
 
