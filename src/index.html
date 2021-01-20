@@ -7,16 +7,16 @@
   </head>
   <body>
     <header>
-      <div class='plane-logo home-button hidden'></div>
-      <div id='dummy-plane' class='plane-logo'></div>
+      <div class='plane-logo home-button'></div>
+      <div id='dummy-plane' class='plane-logo hidden'></div>
       <div class='header-buttons'>
-        <button class='header-button my-trips-button hidden'>My Trips</button>
-        <button class='header-button new-trip-button hidden'>Plan a Trip</button>
-        <button class='header-button logout-button hidden'>Logout</button>
+        <button class='header-button my-trips-button'>My Trips</button>
+        <button class='header-button new-trip-button'>Plan a Trip</button>
+        <button class='header-button logout-button'>Logout</button>
       </div>
     </header>
     <main>
-      <section class='login'>
+      <section class='login hidden'>
         <h1 class='login-welcome'>Welcome to Traveler</h1>
         <form class='login-form'>
         <label class='login-label' for='name-input'>Choose the name attached to your profile</label>
@@ -31,53 +31,52 @@
         <h3 class='agent-login-instructions'>If you are an agent, login here:</h3>
         <button class='agent-login-button'>Agent Login</button>
       </section>
-      <section class='traveler-dashboard hidden'>
+      <section class='traveler-dashboard'>
         <h2 class='user-greeting'></h2>
-        <form class='trip-form hidden'>
-          <div class='created-trip-summary'>
-            <h4 class='selected-destination'>destination > </h4>
-            <h4 class='selected-departure'> departure > </h4>
-            <h4 class='selected-duration'> duration > </h4>
-            <h4 class='selected-travel-party'> travel party</h4>
-          </div>
+        <form class='trip-form'>
           <div id='f_1' class='form-section'>
             <label for='destination-input'>Where do you want to go?</label>
-            <select class="destination-input" name="destination-input">
+            <select id="destination-input" class="destination-input" name="destination-input">
               <option value="0" disabled selected>Select a Destination</option>
             </select>
           </div>
-          <div id='f_2' class='form-section hidden'>
-            <select class="new-trip-year-input" name="new-trip-year-input">
-              <option value="0" disabled selected>year</option>
-              <option value="2022" selected>2022</option>
-              <option value="2021" selected>2021</option>
-            </select>
-            <select class="new-trip-month-input" name="new-trip-month-input">
-              <option value="0" disabled selected>month</option>
-            </select>
-            <select class="new-trip-date-input" name="new-trip-date-input">
-              <option value="0" disabled selected>day</option>
-            </select>
+          <div id='f_2' class='form-section'>
+            <label for='new-trip-year-input'>When do you want to leave?</label>
+            <div class='date-inputs'>
+              <select id="new-trip-year-input" class="new-trip-year-input" name="new-trip-year-input">
+                <option value="0" disabled selected>year</option>
+                <option value="2022" selected>2022</option>
+                <option value="2021" selected>2021</option>
+              </select>
+              <label class='hidden-label' for='new-trip-month-input'>Select Month</label>
+              <select id="new-trip-month-input" class="new-trip-month-input" name="new-trip-month-input">
+                <option value="0" disabled selected>month</option>
+              </select>
+              <label class='hidden-label' for='new-trip-date-input'>Select Date</label>
+              <select id="new-trip-date-input" class="new-trip-date-input" name="new-trip-date-input">
+                <option value="0" disabled selected>day</option>
+              </select>
+            </div>
           </div>
-          <div id='f_3' class='form-section hidden'>
+          <div id='f_3' class='form-section'>
             <label for='duration-input'>How long will you stay?</label>
             <input id='duration-input' class='duration-input' type='text' placeholder='enter a number of days' value=''>
           </div>
-          <div id='f_4' class='form-section hidden'>
+          <div id='f_4' class='form-section'>
             <label for='travel-party-input'>How many people will go with you?</label>
-            <select class="travel-party-input" name="travel-party-input">
+            <select id="travel-party-input" class="travel-party-input" name="travel-party-input">
               <option value="0" disabled selected>Select the total number of travelers</option>
             </select>
           </div>
           <div class='new-trip-details hidden'></div>
           <div class='back-forward-buttons'>
-            <button class='back-button hidden' type='button'></button>
-            <button id='0' class='continue-button' type='button'></button>
-            <button class='finish-button hidden' type='button'></button>
+            <button class='back-button' type='button'>Go Back</button>
+            <button id='0' class='continue-button' type='button'>Continue</button>
+            <button class='finish-button' type='button'>Finish</button>
           </div>
         </form>
       </section>
-      <section class='my-trips hidden'>
+      <section class='my-trips'>
         <h1 class='section-heading'>My Trips</h1>
         <div class='trip-categories'>
           <div class='trip-list'>
@@ -107,7 +106,8 @@
         </div>
         <div class='spending-display'>
           <h1>Total Annual Spending For</h1>
-          <select class="year-input" name="year-input">
+          <label class='hidden-label' for='year-input'>Select Year</label>
+          <select id="year-input" class="year-input" name="year-input">
             <option value="0" disabled selected>Select a year</option>
             <option value="2022" selected>2022</option>
             <option value="2021" selected>2021</option>

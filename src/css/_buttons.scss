@@ -1,14 +1,17 @@
 
 .continue-button {
   @include back-forward-buttons($right-arrow);
+  font-size: 0;
 }
 
 .back-button {
   @include back-forward-buttons($left-arrow);
+  font-size: 0;
 }
 
 .finish-button {
   @include back-forward-buttons($checkmark);
+  font-size: 0;
   box-shadow: 0px 3px 10px 2px $mint-cream;
 }
 

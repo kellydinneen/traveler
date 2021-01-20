@@ -61,6 +61,7 @@ header {
 }
 
 .my-trips {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -186,6 +187,13 @@ input {
   color: $amaranthe;
 }
 
+.date-inputs {
+  flex-direction: row;
+}
+
+.hidden-label {
+  font-size: 0;
+}
 .hidden {
   display: none;
 }
